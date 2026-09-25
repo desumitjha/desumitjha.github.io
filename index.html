@@ -375,39 +375,44 @@ nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
 </script>
 <script>
 (function(){
-  // tiny RAG demo: word-overlap TF-IDF cosine
+  // "Ask my portfolio": tiny RAG over facts about me (TF-IDF retrieval in the browser)
   var docs=[
-    ['Experience','10+ years in data and IT: analytics and data at AXA and Harman (India), data analytics and engineering in consulting at KPMG, data strategy for Toyota and Lexus in Germany, and since 2022 Senior Expert for cloud data architecture at ALDI SÜD. career years background history work'],
-    ['Current role','Senior Expert at ALDI SÜD since 2022: designs and runs an Azure Databricks lakehouse with Delta Lake, medallion architecture, Terraform, CI/CD and automated data quality tests. job today now position'],
-    ['Azure and Databricks','Daily hands-on work with Azure, Databricks, Delta Lake, Unity Catalog, PySpark, Terraform and Azure DevOps. Microsoft certified: Azure Data Engineer Associate (DP-203) and Azure Data Fundamentals (DP-900). cloud platform lakehouse microsoft'],
-    ['AI and GenAI skills','Built a RAG pipeline from scratch (chunking, embeddings, vector search, grounded answers) and an LLM summarisation tool. Learning tool use, MCP, agentic workflows, guardrails and evaluation. llm rag agents claude gemini python generative built build project projects made'],
-    ['Certification','Preparing for Anthropic\'s Claude Certified Architect – Professional (CCAR-P). Already certified Microsoft DP-203, DP-900 and Tealium CDP. certificate certified exam anthropic claude'],
-    ['Roles he wants','AI Solutions, AI Consultant or applied AI engineering roles that mix stakeholder work with hands-on building. Full-time, permanent, in Germany. looking target position job hire open'],
-    ['Governance and GDPR','Implemented GDPR-compliant governance with Unity Catalog, role-based access, row-level security and PII masking. Follows the EU AI Act for responsible AI. privacy compliance security governance'],
-    ['Consulting and stakeholders','Client engagements at KPMG, and at ALDI SÜD works with business and technology stakeholders to turn needs into data models and technical designs. communication business consulting'],
-    ['Languages','English fluent, Hindi fluent, German B1 (TestDaF) and studying towards B2. speak german deutsch english language'],
-    ['Location and work permit','Based in the Ruhr area, North Rhine-Westphalia, open to hybrid work. Holds permanent residence in Germany, so no visa sponsorship is needed. where live relocate remote visa permit located city'],
-    ['Education','M.Sc. Information Engineering and Computer Science, Hochschule Rhein-Waal (Germany), and B.Tech. Computer Science (India). degree university study master'],
-    ['How to contact','Message him on LinkedIn or use the intro-call button at the top of this page. contact reach call email talk interview']
+    {t:'Experience',a:'Over 10 years of professional experience in data and IT: data and analytics at AXA and Harman in India, consulting at KPMG, data strategy for Toyota & Lexus in Germany (alongside his Master’s), and since 2022 Senior Expert for cloud data platforms at ALDI SÜD.',k:'how many years experience long career background history work worked senior seniority previous employers'},
+    {t:'Current role',a:'Senior Expert at ALDI SÜD since 2022. He designs and runs an Azure Databricks lakehouse: Delta Lake, medallion architecture, Terraform, CI/CD and automated data-quality tests.',k:'current job now today role position doing work aldi employer'},
+    {t:'Azure and Databricks',a:'Yes, it is his daily work: Azure, Databricks, Delta Lake, Unity Catalog, PySpark, Terraform and Azure DevOps. Microsoft certified in DP-203 (Azure Data Engineer) and DP-900.',k:'azure databricks cloud spark pyspark delta unity catalog microsoft lakehouse know experience terraform'},
+    {t:'AI he has built',a:'He built a RAG pipeline from scratch (chunking, embeddings, vector search, grounded answers) and an LLM summarisation tool, both on GitHub. This “Ask my portfolio” demo is a small RAG too. Now learning tool use, MCP, agents, guardrails and evaluation.',k:'ai genai generative llm llms large language model models built build made project projects rag agent agents chatbot gemini claude github code portfolio hands-on experience'},
+    {t:'Certification',a:'He is preparing for Anthropic’s Claude Certified Architect – Professional (CCAR-P). Already certified: Microsoft DP-203, DP-900 and Tealium CDP.',k:'certificate certification certified exam anthropic claude ccar credential qualification'},
+    {t:'Roles he wants',a:'AI Solutions, AI Consultant or applied AI engineering roles that mix stakeholder work with hands-on building. Full-time and permanent, in Germany.',k:'role roles looking want target position job hire hiring open type kind next freelance permanent full-time'},
+    {t:'Governance and GDPR',a:'He has implemented GDPR-compliant governance with Unity Catalog, role-based access, row-level security and PII masking, and follows the EU AI Act for responsible AI.',k:'governance gdpr privacy compliance security eu ai act responsible pii data protection'},
+    {t:'Business and stakeholders',a:'Yes. Client engagements at KPMG, and at ALDI SÜD he works with business and technology stakeholders to turn needs into data models and technical designs.',k:'business stakeholder stakeholders communication consulting consultant client clients people soft skills translate explain'},
+    {t:'Languages',a:'Yes. German at B1 level (TestDaF), currently studying towards B2. English and Hindi are fluent.',k:'speak german deutsch english hindi language languages fluent level b1 b2 sprache'},
+    {t:'Work permit',a:'No visa is needed: he holds permanent residence in Germany (Niederlassungserlaubnis), so no sponsorship is required.',k:'visa permit sponsor sponsorship residence work allowed blue card legal right immigration niederlassungserlaubnis need'},
+    {t:'Location',a:'Based in the Ruhr area in North Rhine-Westphalia and open to hybrid work.',k:'where live located location city based remote hybrid office nrw ruhr relocate'},
+    {t:'Education',a:'M.Sc. in Information Engineering and Computer Science from Hochschule Rhein-Waal in Germany, and a B.Tech. in Computer Science from India.',k:'education degree university study studied master masters msc bachelor btech qualification'},
+    {t:'Contact',a:'Message him on LinkedIn, or use the “Book a 20-min intro call” button at the top of this page.',k:'contact reach call email talk interview meet message linkedin book'}
   ];
-  var stop='a an the is are to of and or in on for you your it be can we by with from at as when how do i my what any he his him has does did who which about'.split(' ');
-  function tok(t){return t.toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(function(w){return w&&stop.indexOf(w)<0}).map(function(w){return w.replace(/(ing|ed|es|s)$/,'')})}
-  var T=docs.map(function(d){return tok(d[0]+' '+d[1])}),N=docs.length,df={};
+  var stop='a an the is are to of and or in on for you your it be can we by with from at as when how do i my what any he his him has does did who which about have this that there would could should will me please tell'.split(' ');
+  function stem(w){return w.length>4?w.replace(/(ing|ed|es|s)$/,''):w}
+  function tok(t){return t.toLowerCase().replace(/[’']/g,'').replace(/[^a-z0-9äöüß ]/g,' ').split(/\s+/).filter(function(w){return w&&stop.indexOf(w)<0}).map(stem)}
+  var T=docs.map(function(d){return tok(d.t+' '+d.t+' '+d.k+' '+d.k+' '+d.a)}),N=docs.length,df={};
   T.forEach(function(ts){var seen={};ts.forEach(function(w){if(!seen[w]){df[w]=(df[w]||0)+1;seen[w]=1}})});
   function vec(ts){var v={};ts.forEach(function(w){v[w]=(v[w]||0)+1});Object.keys(v).forEach(function(w){v[w]*=Math.log(1+N/(df[w]||0.5))});return v}
   function cos(a,b){var d=0,na=0,nb=0,k;for(k in a){na+=a[k]*a[k];if(b[k])d+=a[k]*b[k]}for(k in b)nb+=b[k]*b[k];return na&&nb?d/Math.sqrt(na*nb):0}
-  var V=T.map(vec),out=document.getElementById('ragout'),inp=document.getElementById('ragq');
+  var V=T.map(vec),out=document.getElementById('ragout'),inp=document.getElementById('ragq'),MIN=0.03;
   function esc(t){return t.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
   function run(){
     var q=inp.value.trim();if(!q){out.innerHTML='';return}
-    var qv=vec(tok(q)),sc=docs.map(function(d,i){return {i:i,s:cos(qv,V[i])}}).sort(function(a,b){return b.s-a.s});
-    var h='';
-    sc.slice(0,3).forEach(function(r,k){h+='<div class="res'+(k===0&&r.s>0?' best':'')+'"><b>'+esc(docs[r.i][0])+'</b> <small>similarity '+r.s.toFixed(2)+(k===0&&r.s>0?' (retrieved)':'')+'</small><div class="bar"><i style="width:'+Math.round(r.s*100)+'%"></i></div></div>'});
-    if(sc[0].s>0){var ans=docs[sc[0].i][1].replace(/\. [a-z ]+$/,'.');h+='<p style="margin-bottom:0"><b>Grounded answer</b> (from the retrieved fact):</p><div class="res best">'+esc(ans)+'</div><p style="margin-bottom:0"><b>Augmented prompt</b> a model would receive:</p><pre class="prompt">Answer using only the context.\n\nContext: '+esc(ans)+'\n\nQuestion: '+esc(q)+'</pre>'}
-    else h+='<p class="note">No document matches. A good RAG system says "I don\'t know" here instead of guessing.</p>';
+    var sc=docs.map(function(d,i){return {i:i,s:cos(vec(tok(q)),V[i])}}).sort(function(a,b){return b.s-a.s});
+    var hits=sc.filter(function(r){return r.s>=MIN}).slice(0,3),h='';
+    if(!hits.length){out.innerHTML='<div class="res best"><b>I don’t have a fact on that yet.</b> A good RAG system says so instead of guessing. Ask Sumit directly on <a href="https://www.linkedin.com/in/sumit-j-b978b1157/">LinkedIn</a>.</div>';return}
+    var top=docs[hits[0].i];
+    h+='<p style="margin-bottom:0"><b>Answer</b> (grounded in the retrieved fact):</p><div class="res best">'+esc(top.a)+'</div>';
+    h+='<p style="margin:14px 0 0"><b>Retrieved facts</b> and similarity:</p>';
+    hits.forEach(function(r,k){h+='<div class="res"><b>'+esc(docs[r.i].t)+'</b> <small>'+r.s.toFixed(2)+(k===0?' · used for the answer':'')+'</small><div class="bar"><i style="width:'+Math.min(100,Math.round(r.s*100))+'%"></i></div></div>'});
+    h+='<details style="margin-top:8px"><summary class="note" style="cursor:pointer">Show the augmented prompt a model would receive</summary><pre class="prompt">Answer using only the context. If the answer is not in the context, say you don’t know.\n\nContext: '+esc(top.a)+'\n\nQuestion: '+esc(q)+'</pre></details>';
     out.innerHTML=h;
   }
-  var ex=['How many years of experience?','Does he know Azure and Databricks?','What AI has he built?','Does he need a visa?','Does he speak German?','What role is he looking for?'],exEl=document.getElementById('ragex');
+  var ex=['How many years of experience?','Does he know Azure and Databricks?','What AI has he built?','Does he need a visa?','Does he speak German?','What role is he looking for?','Can he work with business people?','What is his salary?'],exEl=document.getElementById('ragex');
   ex.forEach(function(t){var b=document.createElement('button');b.type='button';b.className='q';b.textContent=t;b.onclick=function(){inp.value=t;run()};exEl.appendChild(b)});
   inp.addEventListener('input',run);
 })();
