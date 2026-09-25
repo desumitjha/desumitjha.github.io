@@ -385,7 +385,8 @@ nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
     {t:'Roles he wants',a:'AI Solutions, AI Consultant or applied AI engineering roles that mix stakeholder work with hands-on building. Full-time and permanent, in Germany.',k:'role roles looking want target position job hire hiring open type kind next freelance permanent full-time'},
     {t:'Governance and GDPR',a:'He has implemented GDPR-compliant governance with Unity Catalog, role-based access, row-level security and PII masking, and follows the EU AI Act for responsible AI.',k:'governance gdpr privacy compliance security eu ai act responsible pii data protection'},
     {t:'Business and stakeholders',a:'Yes. Client engagements at KPMG, and at ALDI SÜD he works with business and technology stakeholders to turn needs into data models and technical designs.',k:'business stakeholder stakeholders communication consulting consultant client clients people soft skills translate explain'},
-    {t:'Languages',a:'Yes. German at B1 level (TestDaF), currently studying towards B2. English and Hindi are fluent.',k:'speak german deutsch english hindi language languages fluent level b1 b2 sprache'},
+    {t:'German',g:'lang',a:'Yes. German at B1 level (TestDaF), and he is studying towards B2.',k:'speak german deutsch language languages level b1 b2 sprache'},
+    {t:'English and Hindi',g:'lang',a:'English and Hindi: both fluent.',k:'speak english hindi language languages fluent'},
     {t:'Work permit',a:'No visa is needed: he holds permanent residence in Germany (Niederlassungserlaubnis), so no sponsorship is required.',k:'visa permit sponsor sponsorship residence work allowed blue card legal right immigration niederlassungserlaubnis need'},
     {t:'Location',a:'Based in the Ruhr area in North Rhine-Westphalia and open to hybrid work.',k:'where live located location city based remote hybrid office nrw ruhr relocate'},
     {t:'Education',a:'M.Sc. in Information Engineering and Computer Science from Hochschule Rhein-Waal in Germany, and a B.Tech. in Computer Science from India.',k:'education degree university study studied master masters msc bachelor btech qualification'},
@@ -405,11 +406,15 @@ nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
     var sc=docs.map(function(d,i){return {i:i,s:cos(vec(tok(q)),V[i])}}).sort(function(a,b){return b.s-a.s});
     var hits=sc.filter(function(r){return r.s>=MIN}).slice(0,3),h='';
     if(!hits.length){out.innerHTML='<div class="res best"><b>I don’t have a fact on that yet.</b> A good RAG system says so instead of guessing. Ask Sumit directly on <a href="https://www.linkedin.com/in/sumit-j-b978b1157/">LinkedIn</a>.</div>';return}
-    var top=docs[hits[0].i];
-    h+='<p style="margin-bottom:0"><b>Answer</b> (grounded in the retrieved fact):</p><div class="res best">'+esc(top.a)+'</div>';
+    var yn=/^(does|do|is|are|can|has|have|will|would)\b/i.test(q),qt=tok(q),g0=docs[hits[0].i].g,used=hits.filter(function(r,k){return k===0||(g0&&docs[r.i].g===g0&&r.s>=0.6*hits[0].s)}).slice(0,2);
+    function focus(txt){ // keep only the sentences that answer the question
+      var ss=txt.replace(/([.!?])\s+(?=[A-Z])/g,'$1\n').split('\n'),keep=ss.filter(function(x,i){return (i===0&&/^(Yes|No)\b/.test(x))||tok(x).some(function(w){return qt.indexOf(w)>-1})});
+      return (keep.length&&!(keep.length===1&&/^(Yes|No)\.?$/.test(keep[0])))?keep.join(' '):txt}
+    var ans=used.map(function(r,k){var f=focus(docs[r.i].a);return (k||!yn)?f.replace(/^(Yes|No)[.,]\s*/,''):f}).join(' ');
+    h+='<p style="margin-bottom:0"><b>Answer</b> (only the relevant part of the retrieved facts):</p><div class="res best">'+esc(ans)+'</div>';
     h+='<p style="margin:14px 0 0"><b>Retrieved facts</b> and similarity:</p>';
-    hits.forEach(function(r,k){h+='<div class="res"><b>'+esc(docs[r.i].t)+'</b> <small>'+r.s.toFixed(2)+(k===0?' · used for the answer':'')+'</small><div class="bar"><i style="width:'+Math.min(100,Math.round(r.s*100))+'%"></i></div></div>'});
-    h+='<details style="margin-top:8px"><summary class="note" style="cursor:pointer">Show the augmented prompt a model would receive</summary><pre class="prompt">Answer using only the context. If the answer is not in the context, say you don’t know.\n\nContext: '+esc(top.a)+'\n\nQuestion: '+esc(q)+'</pre></details>';
+    hits.forEach(function(r,k){h+='<div class="res"><b>'+esc(docs[r.i].t)+'</b> <small>'+r.s.toFixed(2)+(k<used.length?' · used for the answer':'')+'</small><div class="bar"><i style="width:'+Math.min(100,Math.round(r.s*100))+'%"></i></div></div>'});
+    h+='<details style="margin-top:8px"><summary class="note" style="cursor:pointer">Show the augmented prompt a model would receive</summary><pre class="prompt">Answer using only the context. If the answer is not in the context, say you don’t know.\n\nContext: '+esc(used.map(function(r){return docs[r.i].a}).join(' '))+'\n\nQuestion: '+esc(q)+'</pre></details>';
     out.innerHTML=h;
   }
   var ex=['How many years of experience?','Does he know Azure and Databricks?','What AI has he built?','Does he need a visa?','Does he speak German?','What role is he looking for?','Can he work with business people?','What is his salary?'],exEl=document.getElementById('ragex');
