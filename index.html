@@ -50,9 +50,12 @@ h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-b
 .stop em{display:block;font-style:normal;font-size:11px;font-weight:700;color:var(--ink2);letter-spacing:.04em}
 .stop.now{border-color:var(--accent);color:var(--accent);box-shadow:0 0 0 4px var(--glow1),var(--shadow)}
 .stop.now em{color:var(--accent)}
-.s1{left:8%;top:88%}.s2{left:-8%;top:50%}.s3{left:8%;top:12%}.s4{left:50%;top:-2%}
+.s1{left:20%;top:95%}.s2{left:-6%;top:60%}.s3{left:2%;top:22%}.s4{left:68%;top:-3%}
 .purpose{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:14px 18px;margin:0 0 24px;max-width:600px;font-size:16px;color:var(--ink2)}
 .purpose b{color:var(--ink)}
+.ph .arcflow{stroke:rgba(255,255,255,.85);stroke-dasharray:1.5 11;animation:arcflow 2.6s linear infinite}
+@keyframes arcflow{to{stroke-dashoffset:-25}}
+@media (prefers-reduced-motion:reduce){.ph .arcflow{display:none}}
 
 section{padding:56px 0}
 .kicker{color:var(--accent);font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 6px}
@@ -178,6 +181,23 @@ nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
 .stages li{counter-increment:st;border:1px solid var(--line);border-radius:12px;padding:9px 12px;font-size:14px;background:var(--bg)}
 .stages li::before{content:"Stage " counter(st);display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
 .stages li.done{border-color:var(--accent2)}.stages li.done::after{content:" ✓";color:var(--accent2);font-weight:800}
+.icount{font-size:14px;color:var(--ink2);margin:0 0 16px}.icount b{font-size:22px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.flips{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));align-items:stretch}
+.flip{display:block;width:100%;height:100%;perspective:1200px;cursor:pointer;border:0;padding:0;margin:0;background:none;text-align:left;font:inherit;color:inherit;vertical-align:top}
+.flip .in{display:grid;height:100%;transition:transform .6s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow);min-height:230px;display:flex;flex-direction:column}
+.flip .f{background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 14%,var(--card)),var(--card) 60%)}
+.flip .b{background:var(--card);transform:rotateY(180deg)}
+.flip .tg{align-self:flex-start;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 10px;background:var(--chip);color:var(--accent);margin-bottom:14px}
+.flip .q{font-size:21px;font-weight:800;line-height:1.25;letter-spacing:-.01em;margin:0}
+.flip .hint{margin-top:auto;padding-top:14px;font-size:13px;color:var(--ink2)}
+.flip .b p{margin:0 0 10px;font-size:15px;color:var(--ink2);line-height:1.5}
+.flip .b p b{color:var(--ink)}
+.flip .so{border-left:3px solid var(--accent2);padding-left:10px}
+.flip .ask{margin-top:auto;font-size:13px;font-weight:700;color:var(--accent)}
+.flip:focus-visible .f,.flip:focus-visible .b{outline:3px solid var(--warm);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.flip .in{transition:none}}
 </style>
 </head>
 <body>
@@ -194,7 +214,7 @@ nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
     <div>
       <span class="pill"><b></b> Open to AI roles in Germany</span> <span class="pill" style="margin-top:6px">Claude Certified Architect (CCAR-P) · in progress</span>
       <h1>Hi, I'm Sumit.<br>I turn <span>data platforms</span> into AI products.</h1>
-      <p class="lead">10+ years in data and IT, from analytics and consulting to Senior Expert for cloud data platforms (Azure, Databricks). Now building GenAI: RAG, agentic workflows and AI use cases, from the business problem to a solution that runs in production.</p>
+      <p class="lead">10+ years of professional experience in data and IT, plus a Master's degree in Germany: from analytics and consulting to Senior Expert for cloud data platforms (Azure, Databricks). Now building GenAI: RAG, agentic workflows and AI use cases, from the business problem to a solution that runs in production.</p>
       <p class="purpose"><b>Why talk to me?</b> Most AI projects stall between pilot and production because the data is not ready, the use case was never worth it, or governance comes too late. I bring both halves: 10+ years in data, including building governed cloud data platforms, and hands-on GenAI (RAG, agents). If your team wants AI that actually ships, a 20-minute intro call is free and without obligation.</p>
       <div class="btns"><button class="btn" data-req="call" type="button">Book a 20-min intro call</button><a class="btn ghost" href="#demo">Ask my AI portfolio</a></div>
       <ul class="stats">
@@ -204,9 +224,10 @@ nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
       </ul>
     </div>
     <div class="ph" role="img" aria-label="My path: analytics and BI, then data engineering, then cloud and governance, now applied AI">
-      <svg class="path" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="pg" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="var(--accent2)"/><stop offset="1" stop-color="var(--accent)"/></linearGradient><marker id="ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="var(--accent)"/></marker></defs>
+      <svg class="path" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="pg" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="var(--accent2)"/><stop offset="1" stop-color="var(--accent)"/></linearGradient><marker id="ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3.2" markerHeight="3.2" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="var(--accent)"/></marker></defs>
         <circle cx="50" cy="50" r="46" fill="none" stroke="var(--line)" stroke-width="2.4"/>
-        <path d="M 17.47 82.53 A 46 46 0 0 1 34.27 6.77" fill="none" stroke="url(#pg)" stroke-width="3.2" stroke-linecap="round" marker-end="url(#ah)"/>
+        <path d="M 23.6 87.7 A 46 46 0 0 1 34.3 6.8" fill="none" stroke="url(#pg)" stroke-width="3.2" stroke-linecap="round" marker-end="url(#ah)"/>
+        <path class="arcflow" d="M 23.6 87.7 A 46 46 0 0 1 34.3 6.8" fill="none" stroke-width="3.2" stroke-linecap="round"/>
       </svg>
       <img src="photo.jpg" alt="Portrait of Sumit Kumar Jha" width="300" height="300" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'phx',textContent:'SJ'}))">
       <span class="stop s1"><em>2013</em>Analytics &amp; BI</span>
@@ -301,37 +322,19 @@ nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
     <ol class="steps3"><li>Pick what you'd like</li><li>Send the request (30 seconds)</li><li>I approve and reply with your link</li></ol>
     <div class="grid">
       <div class="card lockcard"><span class="badge open">Open</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></div><h3>Code on GitHub</h3><p style="margin:0 0 14px">Two working projects with tests and CI. No request needed.</p><a class="btn ghost" href="https://github.com/desumitjha/artificial_intelligence_urai">Open GitHub</a></div>
-      <div class="card lockcard"><span class="badge">By approval</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h3>Learning roadmap and notes</h3><p style="margin:0 0 14px">My stage-by-stage plan from data engineer to AI engineer, plus my interactive study notebook (18 chapters).</p><button class="btn" data-req="roadmap" type="button">Request access</button></div>
+      <div class="card lockcard"><span class="badge">By approval</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h3>CCAR-P notes and cheat sheets</h3><p style="margin:0 0 14px">One-page sheets per topic with retail examples: RAG, tool use, agents, guardrails, evaluation.</p><button class="btn" data-req="notes" type="button">Request access</button></div>
       <div class="card lockcard"><span class="badge">By approval</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h3>Project deep-dives</h3><p style="margin:0 0 14px">Architecture diagrams, design choices, what went wrong and how I fixed it, for the summariser and RAG projects.</p><button class="btn" data-req="deepdive" type="button">Request access</button></div>
       <div class="card lockcard"><span class="badge open">Open to book</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></div><h3>20-minute intro call</h3><p style="margin:0 0 14px">Hiring for applied AI? Let's talk. I'll walk you through my projects and what I can do for your team.</p><button class="btn" data-req="call" type="button">Book a call</button></div>
     </div>
 
-    <h3 style="margin:44px 0 0;font-size:22px">My roadmap, preview</h3>
-    <p class="note" style="margin:4px 0 0">The first stages are public. The full plan with resources and milestones is unlocked on request.</p>
-    <div class="roadwrap">
-      <ol class="road">
-        <li><span class="n">1</span><div><b>Python and the Gemini API</b><span>Note summariser CLI with tests and CI</span></div><span class="st" style="color:#16A34A">Done</span></li>
-        <li><span class="n">2</span><div><b>Embeddings and retrieval</b><span>RAG from scratch: chunk, embed, cosine top-k, grounded answer</span></div><span class="st" style="color:#16A34A">Done</span></li>
-        <li><span class="n">3</span><div><b>Self-healing RAG</b><span>Grade retrieved context, rewrite the query, retry</span></div><span class="st" style="color:var(--warm)">In progress</span></li>
-        <li class="blur"><span class="n">4</span><div><b>LLM guardrails gateway</b><span>Input and output checks before and after the model</span></div><span class="st">Locked</span></li>
-        <li class="blur"><span class="n">5</span><div><b>Evaluation pipeline</b><span>Test sets, metrics and regression checks for LLM apps</span></div><span class="st">Locked</span></li>
-        <li class="blur"><span class="n">6</span><div><b>Agents and tool use</b><span>Function calling on top of the RAG pipeline</span></div><span class="st">Locked</span></li>
-        <li class="blur"><span class="n">7</span><div><b>Fine-tuning with QLoRA and capstone</b><span>One end-to-end project on a Databricks-style data platform</span></div><span class="st">Locked</span></li>
-      </ol>
-      <div class="cover"><button class="btn" data-req="roadmap" type="button">Unlock the full roadmap</button></div>
-    </div>
   </section>
 
 
   <section id="log">
-    <p class="kicker">Learning in public</p><h2>Notes from my studies</h2>
-    <p class="note" style="margin-top:-14px">Currently preparing for the Claude Certified Architect – Professional (CCAR-P) certification and in Week 4 of Ed Donner's AI Engineer Core Track (LLM Engineering, RAG, QLoRA, Agents), alongside Python and SQL fundamentals.</p>
-    <div class="log">
-      <details><summary>Six AI benchmarks, six different exams</summary><p>GPQA tests PhD-level science, MMLU-Pro general knowledge with ten answer options, AIME competition maths, LiveCodeBench fresh coding problems, MuSR reasoning over murder mysteries, and HLE the hardest mixed questions. A score is a report card for one subject, not a verdict on the whole model.</p></details>
-      <details><summary>Open source vs open weights (FLUX as an example)</summary><p>Some FLUX image models are fully open, some publish weights under a restricted licence, and the best is API-only. "Open" can mean very different things, so read the licence before building on a model.</p></details>
-      <details><summary>Two ways to call Hugging Face models</summary><p>Serverless inference is pay-per-use and quick to start but shared. A dedicated endpoint is your own rented machine: steadier and pricier. Choose by traffic and how much control you need.</p></details>
-      <details><summary>NER and classification in three lines of code</summary><p>Named entity recognition highlights people, places, companies and dates inside a sentence. Classification puts a whole text in one box, like positive or negative. The transformers pipeline runs both with small open models.</p></details>
-    </div>
+    <p class="kicker">Learning in public</p><h2>One insight at a time</h2>
+    <p class="note" style="margin-top:-14px;max-width:700px">I learn something every day and turn it into one card: a question a business would ask, what I learned, and why it matters. <b>Tap a card to flip it.</b> Want the full one-page sheet behind a card? Ask for it.</p>
+    <div class="icount"><b id="inCount">–</b> insights so far · new cards added as I learn</div>
+    <div class="flips" id="flips"></div>
   </section>
 
   <section id="experience">
@@ -529,6 +532,30 @@ nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
     var d=i<4?stId[i].every(function(x){return LEARNED.indexOf(x)>-1}):FINAL_DONE;if(d)li.className='done';sl.appendChild(li)});
   draw();pick(NOW[0]||'api');
   var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(draw,120)});
+})();
+</script>
+<script>
+(function(){
+  /* ===== EDIT HERE: add a new insight card at the TOP of this list =====
+     tag: short topic, q: the business question, a: what I learned, so: why it matters */
+  var INSIGHTS=[
+    {tag:'Agents',q:'What turns an LLM into an agent?',a:'Three augmentations, used in a loop: retrieval (look things up), tools (take actions) and memory (remember context).',so:'Start with the smallest augmentation that solves the task. Every extra loop adds cost and new ways to fail.'},
+    {tag:'RAG',q:'Why does a chatbot make things up?',a:'Without retrieval the model answers from memory. RAG finds the right facts first and grounds the answer in them. I built one from scratch.',so:'Grounded answers, plus saying “I don’t know”, are what make AI safe to put in front of customers.'},
+    {tag:'Embeddings',q:'How does AI know “money back” means “refund”?',a:'Embeddings turn text into vectors. Similar meaning ends up close together, even with different words.',so:'This is how search finds the right policy when a customer uses their own words.'},
+    {tag:'Model choice',q:'Which AI model is the best?',a:'Benchmarks are exams for single subjects: GPQA for science, MMLU-Pro for knowledge, AIME for maths, LiveCodeBench for coding.',so:'Choose on a benchmark that looks like your use case, then test on your own data before you commit.'},
+    {tag:'Governance',q:'Is an “open” model free to use?',a:'Open source, open weights and API-only are different things. Some weights come with licences that limit commercial use.',so:'Check the licence before a pilot turns into a product, not after.'},
+    {tag:'Cost',q:'Pay per call or rent a server?',a:'Serverless inference is pay-per-use and quick to start but shared. A dedicated endpoint is your own machine: steadier, but you pay while it idles.',so:'Pilot on serverless; move to dedicated once traffic is steady and predictable.'},
+    {tag:'Architecture',q:'Do you always need a big LLM?',a:'Named-entity recognition and text classification run on small open models in a few lines of code.',so:'Tagging tickets or pulling names from invoices is often cheaper and faster without a large model.'}
+  ];
+  function esc(t){return t.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+  var box=document.getElementById('flips');document.getElementById('inCount').textContent=INSIGHTS.length;
+  INSIGHTS.forEach(function(x){
+    var b=document.createElement('button');b.type='button';b.className='flip';b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',x.q+' (flip card)');
+    b.innerHTML='<div class="in"><div class="f"><span class="tg">'+esc(x.tag)+'</span><p class="q">'+esc(x.q)+'</p><span class="hint">Tap to see what I learned ↻</span></div><div class="b"><span class="tg">'+esc(x.tag)+'</span><p><b>What I learned:</b> '+esc(x.a)+'</p><p class="so"><b>Why it matters:</b> '+esc(x.so)+'</p><span class="ask" data-ask="1">Get the one-page sheet →</span></div></div>';
+    b.addEventListener('click',function(e){
+      if(e.target.getAttribute('data-ask')){var t=document.querySelector('.shelf [data-req="notes"]');if(t){t.click();return}}
+      b.classList.toggle('on');b.setAttribute('aria-pressed',b.classList.contains('on'))});
+    box.appendChild(b)});
 })();
 </script>
 </body>
