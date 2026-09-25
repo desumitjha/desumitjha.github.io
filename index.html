@@ -8,7 +8,7 @@
 <meta property="og:description" content="Senior data engineer building GenAI on Azure and Databricks: RAG, agentic workflows and AI use cases. Preparing for Claude Certified Architect (CCAR-P). Based in Germany.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://desumitjha.github.io/">
-<meta name="description" content="Sumit Kumar Jha: 10+ years in data engineering on Azure and Databricks, now focused on applied AI: LLMs, RAG, agentic workflows and AI use-case delivery. Based in Germany.">
+<meta name="description" content="Sumit Kumar Jha: 10+ years in data and IT, Senior Expert for cloud data platforms (Azure, Databricks), now focused on applied AI: LLMs, RAG, agentic workflows and AI use-case delivery. Based in Germany.">
 <style>
 :root{--bg:#F7F8FC;--bg2:#EEF1FA;--card:#FFFFFF;--ink:#0F1A33;--ink2:#54627F;--line:#E0E6F3;--accent:#4F46E5;--accent2:#0EA5A4;--warm:#F97316;--chip:#EEF0FF;--shadow:0 1px 2px rgba(15,26,51,.05),0 12px 32px rgba(15,26,51,.08);--glow1:rgba(79,70,229,.18);--glow2:rgba(14,165,164,.16)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A0F1E;--bg2:#0F1730;--card:#111A33;--ink:#EEF2FF;--ink2:#9DABCB;--line:#1F2B4A;--accent:#8B93FF;--accent2:#2DD4BF;--warm:#FB923C;--chip:#1A2447;--shadow:0 12px 32px rgba(0,0,0,.35);--glow1:rgba(99,102,241,.28);--glow2:rgba(45,212,191,.16)}}
@@ -141,13 +141,50 @@ button.btn.ghost{border:1px solid var(--line)}
 .shelf li small{display:block;color:var(--ink2);font-size:13px}
 nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
 .lk{font-size:12px;font-weight:700;color:var(--accent);margin-left:6px}
+.amap{padding:20px 22px}
+.amap-top{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;align-items:center;margin-bottom:8px}
+.amap-top b{font-size:26px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.legend{display:flex;gap:14px;font-size:13px;color:var(--ink2)}
+.legend span{display:flex;align-items:center;gap:6px}
+.lg{width:12px;height:12px;border-radius:4px;display:inline-block}
+.lg.l{background:var(--accent2)}.lg.n{background:var(--accent);box-shadow:0 0 0 3px var(--glow1)}.lg.x{background:transparent;border:1.5px dashed var(--ink2)}
+.amstage svg{width:100%;height:auto;display:block}
+.amstage .edge{fill:none;stroke:var(--line);stroke-width:2.2}
+.amstage .edge.on{stroke:var(--accent);stroke-dasharray:7 9;animation:flow 1.4s linear infinite;opacity:.85}
+.amstage .dot{fill:var(--warm);filter:drop-shadow(0 0 6px var(--warm))}
+.amstage .edge.soft{stroke-dasharray:3 6}
+@keyframes flow{to{stroke-dashoffset:-32}}
+.amstage .node{cursor:pointer}
+.amstage .node rect{fill:var(--card);stroke:var(--line);stroke-width:1.6;transition:all .2s}
+.amstage .node text{fill:var(--ink);font:700 13.5px Inter,system-ui,sans-serif;pointer-events:none}
+.amstage .node text.sub{fill:var(--ink2);font:600 11px Inter,system-ui,sans-serif;letter-spacing:.05em}
+.amstage .node.next rect{stroke-dasharray:5 5;stroke:var(--ink2);opacity:.9}
+.amstage .node.next text{fill:var(--ink2)}
+.amstage .node.learned rect{stroke:var(--accent2);stroke-width:2.2;fill:color-mix(in srgb,var(--accent2) 12%,var(--card))}
+.amstage .node.now rect{stroke:var(--accent);stroke-width:2.4;animation:pulse 2.2s ease-in-out infinite}
+.amstage .node.plain rect{fill:var(--bg2)}
+.amstage .node.sel rect{stroke-width:3.4;filter:drop-shadow(0 6px 14px var(--glow1))}
+.amstage .node:hover rect{filter:drop-shadow(0 6px 14px var(--glow1))}
+.amstage .node:focus{outline:none}.amstage .node:focus-visible rect{stroke:var(--warm);stroke-width:3}
+@keyframes pulse{0%,100%{filter:drop-shadow(0 0 0 transparent)}50%{filter:drop-shadow(0 0 10px var(--glow1))}}
+@media (prefers-reduced-motion:reduce){.amstage .edge.on,.amstage .node.now rect{animation:none}}
+.aminfo{border-top:1px solid var(--line);margin-top:10px;padding-top:14px;min-height:120px}
+.aminfo h3{margin:0 0 2px;font-size:19px}
+.aminfo .st{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 10px;margin:4px 0 8px;background:var(--chip);color:var(--ink2)}
+.aminfo .st.learned{color:#fff;background:var(--accent2)}.aminfo .st.now{color:#fff;background:var(--accent)}
+.aminfo ul{margin:0 0 10px;padding-left:18px;color:var(--ink2)}
+.aminfo .why{font-size:15px;color:var(--ink2);margin:0 0 12px}
+.stages{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));counter-reset:st}
+.stages li{counter-increment:st;border:1px solid var(--line);border-radius:12px;padding:9px 12px;font-size:14px;background:var(--bg)}
+.stages li::before{content:"Stage " counter(st);display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.stages li.done{border-color:var(--accent2)}.stages li.done::after{content:" ✓";color:var(--accent2);font-weight:800}
 </style>
 </head>
 <body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="#top">Sumit <i>Jha</i></a>
   <nav aria-label="Sections">
-    <a class="hide-s" href="#about">About</a><a class="hide-s" href="#skills">Skills</a><a href="#projects">Projects</a><a href="#ccarp">CCAR-P</a><a class="hide-s" href="#unlock">Unlock</a><a class="hide-s" href="#experience">Experience</a><a href="#contact">Contact</a>
+    <a class="hide-s" href="#about">About</a><a class="hide-s" href="#skills">Skills</a><a class="hide-s" href="#projects">Projects</a><a href="#demo">Ask me</a><a href="#ccarp">CCAR-P</a><a class="hide-s" href="#unlock">Unlock</a><a class="hide-s" href="#experience">Experience</a><a href="#contact">Contact</a>
     <button id="theme" type="button" aria-label="Switch light or dark theme">Theme</button>
   </nav>
 </div></header>
@@ -155,13 +192,13 @@ nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
 <main class="wrap" id="top">
   <div class="hero"><div class="hero-grid">
     <div>
-      <span class="pill"><b></b> Open to AI roles in Germany</span> <span class="pill" style="margin-top:6px">Claude Certified Architect (CCAR-P) exam · 31 Oct 2026</span>
+      <span class="pill"><b></b> Open to AI roles in Germany</span> <span class="pill" style="margin-top:6px">Claude Certified Architect (CCAR-P) · in progress</span>
       <h1>Hi, I'm Sumit.<br>I turn <span>data platforms</span> into AI products.</h1>
-      <p class="lead">Senior data engineer with 10+ years on Azure and Databricks, now building GenAI: RAG, agentic workflows and AI use cases, from the business problem to a solution that runs in production.</p>
-      <p class="purpose"><b>Why talk to me?</b> Most AI projects stall between pilot and production because the data is not ready, the use case was never worth it, or governance comes too late. I bring both halves: 10+ years building governed data platforms, and hands-on GenAI (RAG, agents). If your team wants AI that actually ships, a 20-minute intro call is free and without obligation.</p>
-      <div class="btns"><button class="btn" data-req="call" type="button">Book a 20-min intro call</button><a class="btn ghost" href="#unlock">Unlock my roadmap</a></div>
+      <p class="lead">10+ years in data and IT, from analytics and consulting to Senior Expert for cloud data platforms (Azure, Databricks). Now building GenAI: RAG, agentic workflows and AI use cases, from the business problem to a solution that runs in production.</p>
+      <p class="purpose"><b>Why talk to me?</b> Most AI projects stall between pilot and production because the data is not ready, the use case was never worth it, or governance comes too late. I bring both halves: 10+ years in data, including building governed cloud data platforms, and hands-on GenAI (RAG, agents). If your team wants AI that actually ships, a 20-minute intro call is free and without obligation.</p>
+      <div class="btns"><button class="btn" data-req="call" type="button">Book a 20-min intro call</button><a class="btn ghost" href="#demo">Ask my AI portfolio</a></div>
       <ul class="stats">
-        <li><b>10+ years</b>data engineering on cloud platforms</li>
+        <li><b>10+ years</b>in data and IT</li>
         <li><b>Azure · Databricks</b>lakehouse platforms</li>
         <li><b>LLMs · RAG · Agents</b>building since 2026</li>
       </ul>
@@ -183,8 +220,18 @@ nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
     <p class="kicker">About</p><h2>From messy data to reliable AI</h2>
     <div class="card">
       <p style="margin-top:0">I am a senior data engineer with a background in analytics and consulting across India and Germany. I build lakehouse platforms (Azure Databricks, Delta Lake, Unity Catalog), data pipelines and governance.</p>
-      <p>I am moving into applied AI: LLM applications, retrieval-augmented generation (RAG), agentic workflows and tool use. I learn by building small projects and writing down what I learn, and I am preparing for the Claude Certified Architect – Professional (CCAR-P) exam on 31 October 2026.</p>
+      <p>I am moving into applied AI: LLM applications, retrieval-augmented generation (RAG), agentic workflows and tool use. I learn by building small projects and writing down what I learn, and I am preparing for the Claude Certified Architect – Professional (CCAR-P) certification.</p>
       <p style="margin-bottom:0">I work best between business and IT: finding the right AI use case, judging its value and feasibility, and then building it on a governed data foundation. I am open to AI Solutions, AI Consultant and applied AI engineering roles in Germany that mix stakeholder work with hands-on building.</p>
+    </div>
+  </section>
+
+  <section id="demo">
+    <p class="kicker">Live RAG demo</p><h2>Ask my portfolio</h2>
+    <div class="card demo">
+      <p style="margin-top:0">Recruiter questions, answered by a small <b>RAG</b> (retrieval-augmented generation) pipeline over facts about me. Type a question: the page retrieves the most relevant fact, shows the similarity scores, and builds the grounded prompt a model would receive. Retrieval runs in your browser with simple word-overlap scoring; my real projects use neural embeddings, but the retrieve step works the same way.</p>
+      <input type="text" id="ragq" placeholder="Ask about me, e.g. What is his experience with Azure?" aria-label="Your question">
+      <div class="row" id="ragex"></div>
+      <div id="ragout" aria-live="polite"></div>
     </div>
   </section>
 
@@ -197,7 +244,7 @@ nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
       <div class="card skill"><h3>Engineering</h3><ul class="chips"><li>SQL</li><li>Terraform</li><li>Git</li><li>CI/CD (GitLab, Azure DevOps)</li><li>Great Expectations</li><li>PyTest</li></ul></div>
       <div class="card skill"><h3>Governance and BI</h3><ul class="chips"><li>GDPR</li><li>RBAC</li><li>Data lineage</li><li>Power BI</li><li>Tableau</li></ul></div>
     </div>
-    <p class="note" style="margin-top:16px">Claude Certified Architect – Professional (CCAR-P): exam scheduled 31 Oct 2026<br>Certified: Microsoft Azure Data Engineer Associate (DP-203) · Azure Data Fundamentals (DP-900) · Tealium CDP</p>
+    <p class="note" style="margin-top:16px">Claude Certified Architect – Professional (CCAR-P): in progress<br>Certified: Microsoft Azure Data Engineer Associate (DP-203) · Azure Data Fundamentals (DP-900) · Tealium CDP</p>
   </section>
 
   <section id="projects">
@@ -222,20 +269,15 @@ nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
   </section>
 
   <section id="ccarp">
-    <p class="kicker">Learning in public</p><h2>Road to Claude Certified Architect (CCAR-P)</h2>
-    <p class="note" style="margin-top:-14px;max-width:680px">I am preparing for Anthropic's Claude Certified Architect – Professional exam on <b>31 October 2026</b>. Here is my week-by-week plan. The plan and topics are public; my own notes and cheat sheets are shared on request.</p>
-    <div class="ccar-head">
-      <div class="cd"><b id="ccDays">–</b><span id="ccLbl">days to the exam</span></div>
-      <div class="prog"><b>Study plan progress</b><div class="bar"><i id="ccBar" style="width:0%"></i></div><span class="note" id="ccTxt">Five focused weeks, one exam domain at a time.</span></div>
+    <p class="kicker">Learning in public</p><h2>The AI architecture I am mastering</h2>
+    <p class="note" style="margin-top:-14px;max-width:700px">My path to <b>Claude Certified Architect – Professional (CCAR-P)</b>, drawn as the system I am learning to design. Components light up as I learn them. <b>Tap any box</b> to see what it covers.</p>
+    <div class="amap card">
+      <div class="amap-top"><div><b id="amCount">–</b> <span id="amCountL">components learned</span></div>
+        <div class="legend"><span><i class="lg l"></i>Learned</span><span><i class="lg n"></i>Learning now</span><span><i class="lg x"></i>Up next</span></div></div>
+      <div id="amStage" class="amstage" aria-label="Interactive architecture map"></div>
+      <div id="amInfo" class="aminfo" aria-live="polite"></div>
+      <ol class="stages" id="amStages"></ol>
     </div>
-    <ol class="weeks" id="ccWeeks">
-      <li class="wk" data-s="2026-09-28" data-e="2026-10-04"><div class="when">WEEK 1<i>28 Sep – 4 Oct</i></div><div><h3>LLM system design with the Claude API</h3><ul><li>Messages API, system prompts, context windows and token budgets</li><li>Prompt design and structured output</li><li>Retrieval augmentation: when RAG, when long context</li></ul></div><span class="st">Planned</span></li>
-      <li class="wk" data-s="2026-10-05" data-e="2026-10-11"><div class="when">WEEK 2<i>5 – 11 Oct</i></div><div><h3>Tool use, MCP and integration</h3><ul><li>Tool use / function calling and tool design</li><li>Model Context Protocol (MCP): servers, tools and resources</li><li>Connecting Claude safely to enterprise data and APIs</li></ul></div><span class="st">Planned</span></li>
-      <li class="wk" data-s="2026-10-12" data-e="2026-10-18"><div class="when">WEEK 3<i>12 – 18 Oct</i></div><div><h3>Workflow orchestration and agents</h3><ul><li>Agent loops: retrieval, tools and memory</li><li>Multi-agent systems and delegation patterns</li><li>Failure handling, retries and human-in-the-loop</li></ul></div><span class="st">Planned</span></li>
-      <li class="wk" data-s="2026-10-19" data-e="2026-10-25"><div class="when">WEEK 4<i>19 – 25 Oct</i></div><div><h3>Enterprise architecture, safety and guardrails</h3><ul><li>Cost optimisation, caching, resilience and scaling</li><li>Metric-driven design and evaluation</li><li>Guardrails, responsible AI and governance (EU AI Act, GDPR)</li></ul></div><span class="st">Planned</span></li>
-      <li class="wk" data-s="2026-10-26" data-e="2026-10-30"><div class="when">WEEK 5<i>26 – 30 Oct</i></div><div><h3>Mock exams and review</h3><ul><li>Timed practice exams</li><li>Revisit weak domains, one-page cheat sheet per domain</li></ul></div><span class="st">Planned</span></li>
-      <li class="wk exam" data-s="2026-10-31" data-e="2026-10-31"><div class="when">EXAM DAY<i>31 Oct</i></div><div><h3>CCAR-P exam (online proctored)</h3><ul><li>Result and badge will be posted here and on LinkedIn</li></ul></div><span class="st">Exam</span></li>
-    </ol>
 
     <div class="shelf">
       <div class="card"><h3>What I am learning from</h3><p class="meta">Courses and sources I use</p><ul>
@@ -280,19 +322,10 @@ nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
     </div>
   </section>
 
-  <section id="demo">
-    <p class="kicker">Live demo</p><h2>Try a tiny RAG, right here</h2>
-    <div class="card demo">
-      <p style="margin-top:0">RAG means <b>R</b>etrieval-<b>A</b>ugmented <b>G</b>eneration: find the most relevant text first, then hand it to the model with the question. Ask a customer-support question and see which document is retrieved. This demo uses simple word-overlap scoring in your browser; my real projects use neural embeddings, but the retrieve step works the same way.</p>
-      <input type="text" id="ragq" placeholder="Ask something, e.g. How long do I have to return an item?" aria-label="Your question">
-      <div class="row" id="ragex"></div>
-      <div id="ragout" aria-live="polite"></div>
-    </div>
-  </section>
 
   <section id="log">
     <p class="kicker">Learning in public</p><h2>Notes from my studies</h2>
-    <p class="note" style="margin-top:-14px">Currently preparing for the Claude Certified Architect – Professional (CCAR-P) exam (31 Oct 2026) and in Week 4 of Ed Donner's AI Engineer Core Track (LLM Engineering, RAG, QLoRA, Agents), alongside Python and SQL fundamentals.</p>
+    <p class="note" style="margin-top:-14px">Currently preparing for the Claude Certified Architect – Professional (CCAR-P) certification and in Week 4 of Ed Donner's AI Engineer Core Track (LLM Engineering, RAG, QLoRA, Agents), alongside Python and SQL fundamentals.</p>
     <div class="log">
       <details><summary>Six AI benchmarks, six different exams</summary><p>GPQA tests PhD-level science, MMLU-Pro general knowledge with ten answer options, AIME competition maths, LiveCodeBench fresh coding problems, MuSR reasoning over murder mysteries, and HLE the hardest mixed questions. A score is a report card for one subject, not a verdict on the whole model.</p></details>
       <details><summary>Open source vs open weights (FLUX as an example)</summary><p>Some FLUX image models are fully open, some publish weights under a restricted licence, and the best is API-only. "Open" can mean very different things, so read the licence before building on a model.</p></details>
@@ -341,13 +374,20 @@ nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
 (function(){
   // tiny RAG demo: word-overlap TF-IDF cosine
   var docs=[
-    ['Returns','You can return any item within 30 days of delivery for a full refund. The item must be unused and in its original packaging. Start a return from your order page.'],
-    ['Shipping','Standard delivery takes 3 to 5 working days. Express delivery arrives the next working day. Orders over 50 euros ship free.'],
-    ['Warranty','All electronics come with a 2 year warranty that covers defects. Damage from drops or water is not covered.'],
-    ['Payment','We accept credit cards, PayPal and bank transfer. Payment is taken when your order ships.'],
-    ['Opening hours','Customer support is open Monday to Friday from 9:00 to 18:00. Email replies usually arrive within one working day.']
+    ['Experience','10+ years in data and IT: analytics and data at AXA and Harman (India), data analytics and engineering in consulting at KPMG, data strategy for Toyota and Lexus in Germany, and since 2022 Senior Expert for cloud data architecture at ALDI SÜD. career years background history work'],
+    ['Current role','Senior Expert at ALDI SÜD since 2022: designs and runs an Azure Databricks lakehouse with Delta Lake, medallion architecture, Terraform, CI/CD and automated data quality tests. job today now position'],
+    ['Azure and Databricks','Daily hands-on work with Azure, Databricks, Delta Lake, Unity Catalog, PySpark, Terraform and Azure DevOps. Microsoft certified: Azure Data Engineer Associate (DP-203) and Azure Data Fundamentals (DP-900). cloud platform lakehouse microsoft'],
+    ['AI and GenAI skills','Built a RAG pipeline from scratch (chunking, embeddings, vector search, grounded answers) and an LLM summarisation tool. Learning tool use, MCP, agentic workflows, guardrails and evaluation. llm rag agents claude gemini python generative built build project projects made'],
+    ['Certification','Preparing for Anthropic\'s Claude Certified Architect – Professional (CCAR-P). Already certified Microsoft DP-203, DP-900 and Tealium CDP. certificate certified exam anthropic claude'],
+    ['Roles he wants','AI Solutions, AI Consultant or applied AI engineering roles that mix stakeholder work with hands-on building. Full-time, permanent, in Germany. looking target position job hire open'],
+    ['Governance and GDPR','Implemented GDPR-compliant governance with Unity Catalog, role-based access, row-level security and PII masking. Follows the EU AI Act for responsible AI. privacy compliance security governance'],
+    ['Consulting and stakeholders','Client engagements at KPMG, and at ALDI SÜD works with business and technology stakeholders to turn needs into data models and technical designs. communication business consulting'],
+    ['Languages','English fluent, Hindi fluent, German B1 (TestDaF) and studying towards B2. speak german deutsch english language'],
+    ['Location and work permit','Based in the Ruhr area, North Rhine-Westphalia, open to hybrid work. Holds permanent residence in Germany, so no visa sponsorship is needed. where live relocate remote visa permit located city'],
+    ['Education','M.Sc. Information Engineering and Computer Science, Hochschule Rhein-Waal (Germany), and B.Tech. Computer Science (India). degree university study master'],
+    ['How to contact','Message him on LinkedIn or use the intro-call button at the top of this page. contact reach call email talk interview']
   ];
-  var stop='a an the is are to of and or in on for you your it be can we by with from at as when how do i my what any'.split(' ');
+  var stop='a an the is are to of and or in on for you your it be can we by with from at as when how do i my what any he his him has does did who which about'.split(' ');
   function tok(t){return t.toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(function(w){return w&&stop.indexOf(w)<0}).map(function(w){return w.replace(/(ing|ed|es|s)$/,'')})}
   var T=docs.map(function(d){return tok(d[0]+' '+d[1])}),N=docs.length,df={};
   T.forEach(function(ts){var seen={};ts.forEach(function(w){if(!seen[w]){df[w]=(df[w]||0)+1;seen[w]=1}})});
@@ -359,12 +399,12 @@ nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
     var q=inp.value.trim();if(!q){out.innerHTML='';return}
     var qv=vec(tok(q)),sc=docs.map(function(d,i){return {i:i,s:cos(qv,V[i])}}).sort(function(a,b){return b.s-a.s});
     var h='';
-    sc.forEach(function(r,k){h+='<div class="res'+(k===0&&r.s>0?' best':'')+'"><b>'+esc(docs[r.i][0])+'</b> <small>similarity '+r.s.toFixed(2)+(k===0&&r.s>0?' (retrieved)':'')+'</small><div class="bar"><i style="width:'+Math.round(r.s*100)+'%"></i></div></div>'});
-    if(sc[0].s>0){h+='<p style="margin-bottom:0"><b>Augmented prompt</b> sent to the model:</p><pre class="prompt">Answer using only the context.\n\nContext: '+esc(docs[sc[0].i][1])+'\n\nQuestion: '+esc(q)+'</pre>'}
+    sc.slice(0,3).forEach(function(r,k){h+='<div class="res'+(k===0&&r.s>0?' best':'')+'"><b>'+esc(docs[r.i][0])+'</b> <small>similarity '+r.s.toFixed(2)+(k===0&&r.s>0?' (retrieved)':'')+'</small><div class="bar"><i style="width:'+Math.round(r.s*100)+'%"></i></div></div>'});
+    if(sc[0].s>0){var ans=docs[sc[0].i][1].replace(/\. [a-z ]+$/,'.');h+='<p style="margin-bottom:0"><b>Grounded answer</b> (from the retrieved fact):</p><div class="res best">'+esc(ans)+'</div><p style="margin-bottom:0"><b>Augmented prompt</b> a model would receive:</p><pre class="prompt">Answer using only the context.\n\nContext: '+esc(ans)+'\n\nQuestion: '+esc(q)+'</pre>'}
     else h+='<p class="note">No document matches. A good RAG system says "I don\'t know" here instead of guessing.</p>';
     out.innerHTML=h;
   }
-  var ex=['How long do I have to return an item?','Is delivery free?','Does the warranty cover water damage?','When can I call support?'],exEl=document.getElementById('ragex');
+  var ex=['How many years of experience?','Does he know Azure and Databricks?','What AI has he built?','Does he need a visa?','Does he speak German?','What role is he looking for?'],exEl=document.getElementById('ragex');
   ex.forEach(function(t){var b=document.createElement('button');b.type='button';b.className='q';b.textContent=t;b.onclick=function(){inp.value=t;run()};exEl.appendChild(b)});
   inp.addEventListener('input',run);
 })();
@@ -416,20 +456,79 @@ nav a{white-space:nowrap}@media (max-width:640px){.cd{flex:1 1 100%}}
   });
 })();
 </script>
+
 <script>
 (function(){
-  var exam=new Date('2026-10-31T09:00:00'),start=new Date('2026-09-28T00:00:00'),now=new Date();
-  var days=Math.ceil((exam-now)/864e5),el=document.getElementById('ccDays'),lb=document.getElementById('ccLbl');
-  if(days>1){el.textContent=days}else if(days===1){el.textContent='1';lb.textContent='day to the exam'}else{el.textContent='Done';lb.textContent='exam taken on 31 Oct 2026'}
-  var pct=Math.max(0,Math.min(100,Math.round((now-start)/(exam-start)*100)));
-  document.getElementById('ccBar').style.width=pct+'%';
-  var today=new Date(now.getFullYear(),now.getMonth(),now.getDate()),cur=null;
-  [].forEach.call(document.querySelectorAll('#ccWeeks .wk'),function(w){
-    var s=new Date(w.dataset.s+'T00:00:00'),e=new Date(w.dataset.e+'T23:59:59'),st=w.querySelector('.st');
-    if(today>e){w.classList.add('past');if(!w.classList.contains('exam'))st.textContent='Covered'}
-    else if(today>=s){w.classList.add('now');st.textContent=w.classList.contains('exam')?'Today':'This week';cur=w.querySelector('h3').textContent}
-  });
-  document.getElementById('ccTxt').textContent=cur?('Now studying: '+cur):(now<start?'Starts 28 September: five focused weeks, one exam domain at a time.':'Five focused weeks, one exam domain at a time.');
+  /* ============ EDIT HERE ============
+     Put the id of every component you have learned in LEARNED,
+     and what you are studying right now in NOW.
+     ids: prompt, api, rag, tools, data, agents, guard, eval          */
+  var LEARNED = ['prompt','rag'];
+  var NOW     = ['api','agents','eval'];
+  var FINAL_DONE = false;   // set to true once you are certified
+  /* =================================== */
+  var N={
+    user:{t:'Business request',s:'START',plain:1,info:'Every AI system starts with a real business problem, not with a model. Picking the right use case is part of the architecture.'},
+    guard:{t:'Guardrails & safety',s:'STAGE 4',b:['Input and output checks','Responsible AI and bias','Governance: EU AI Act, GDPR']},
+    agents:{t:'Agent orchestration',s:'STAGE 3',b:['Agent loops and the three augmentations: retrieval, tools, memory','Multi-agent delegation patterns','Failure handling and human-in-the-loop']},
+    api:{t:'Claude API',s:'STAGE 1',big:1,b:['Messages API and system prompts','Context windows and token budgets','Structured output']},
+    prompt:{t:'Prompt & context',s:'STAGE 1',b:['Prompt design patterns','Context engineering','When long context beats retrieval'],proof:['Built: note summariser (CLI)','https://github.com/desumitjha/artificial_intelligence_urai/tree/main/01-document-summarizer']},
+    rag:{t:'Knowledge / RAG',s:'STAGE 1',b:['Chunking and embeddings','Vector search and retrieval','Grounded answers (built one from scratch)'],proof:['Built: RAG from scratch','https://github.com/desumitjha/artificial_intelligence_urai/tree/main/02-rag-from-scratch'],try:1},
+    tools:{t:'Tools & MCP',s:'STAGE 2',b:['Tool use / function calling','Designing good tools','Model Context Protocol: servers, tools, resources']},
+    data:{t:'Company data & APIs',s:'STAGE 2',b:['Connecting Claude to company systems','Secure access and permissions','My home ground: governed lakehouse data']},
+    eval:{t:'Evaluation & cost',s:'STAGE 4',b:['Metric-driven design and evals','Finding defects in LLM systems','Caching, cost optimisation and scaling']}
+  };
+  var L={ // landscape 900x470
+    vb:'0 0 900 470',w:170,h:56,
+    p:{user:[92,235],guard:[272,235],agents:[452,235],api:[640,235],prompt:[640,80],rag:[640,395],tools:[810,145],data:[810,325],eval:[272,395]},
+    e:[['user','guard'],['guard','agents'],['agents','api'],['prompt','api'],['rag','api'],['api','tools'],['tools','data'],['eval','agents',1],['eval','api',1]]};
+  var P={ // portrait 360x760
+    vb:'0 0 360 760',w:168,h:56,
+    p:{user:[180,40],guard:[180,135],agents:[180,235],api:[180,340],prompt:[90,450],rag:[90,560],tools:[270,450],data:[270,560],eval:[180,675]},
+    e:[['user','guard'],['guard','agents'],['agents','api'],['prompt','api'],['rag','prompt'],['api','tools'],['tools','data'],['eval','rag',1],['eval','data',1]]};
+  var STAGES=['Claude API, prompts & RAG','Tools, MCP & integration','Agents & orchestration','Architecture, evaluation & guardrails','Mock exams → certified'];
+  function st(id){return N[id].plain?'plain':LEARNED.indexOf(id)>-1?'learned':NOW.indexOf(id)>-1?'now':'next'}
+  var stage=document.getElementById('amStage'),info=document.getElementById('amInfo'),sel=null,cur=null;
+  var ns='http://www.w3.org/2000/svg';
+  function mk(t,a,p){var e=document.createElementNS(ns,t);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+  function draw(){
+    var Lay=window.innerWidth<700?P:L;if(Lay===cur&&stage.firstChild)return;cur=Lay;stage.innerHTML='';
+    var svg=mk('svg',{viewBox:Lay.vb,role:'group'},stage),ge=mk('g',{},svg),gn=mk('g',{},svg);
+    Lay.e.forEach(function(ed){var a=Lay.p[ed[0]],b=Lay.p[ed[1]];
+      var on=[ed[0],ed[1]].every(function(i){var x=st(i);return x!=='next'});
+      mk('path',{d:'M'+a[0]+' '+a[1]+' L'+b[0]+' '+b[1],'class':'edge'+(on?' on':'')+(ed[2]?' soft':'')},ge)});
+    var fl=['user','guard','agents','api','tools','data'].map(function(i){return Lay.p[i]});
+    if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      var d='M'+fl.map(function(q){return q[0]+' '+q[1]}).join(' L');
+      var dot=mk('circle',{r:6,'class':'dot'},ge);mk('animateMotion',{dur:'6s',repeatCount:'indefinite',path:d},dot);}
+    Object.keys(Lay.p).forEach(function(id){var c=Lay.p[id],n=N[id],w=Lay.w+(n.big?24:0),h=Lay.h+(n.big?10:0);
+      var g=mk('g',{'class':'node '+st(id)+(sel===id?' sel':''),tabindex:0,role:'button','aria-label':n.t+', '+st(id)},gn);g.dataset.id=id;
+      mk('rect',{x:c[0]-w/2,y:c[1]-h/2,width:w,height:h,rx:14},g);
+      var s=st(id),lab=n.s+(s==='learned'?'  ✓':s==='now'?'  • NOW':'');
+      mk('text',{x:c[0],y:c[1]-5,'text-anchor':'middle','class':'sub'},g).textContent=lab;
+      mk('text',{x:c[0],y:c[1]+14,'text-anchor':'middle'},g).textContent=n.t;
+      g.addEventListener('click',function(){pick(id)});
+      g.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();pick(id)}});
+    });
+  }
+  function esc(t){return t.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+  function pick(id){sel=id;cur=null;draw();var n=N[id],s=st(id);
+    var lbl={learned:'Learned',now:'Learning now',next:'Up next',plain:'Starting point'}[s];
+    var h='<h3>'+esc(n.t)+'</h3><span class="st '+s+'">'+lbl+(n.plain?'':' · '+n.s.toLowerCase().replace('stage','Stage'))+'</span>';
+    if(n.info)h+='<p class="why">'+esc(n.info)+'</p>';
+    if(n.b)h+='<ul>'+n.b.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>';
+    if(n.proof)h+='<p class="why"><b>Proof:</b> <a href="'+n.proof[1]+'">'+esc(n.proof[0])+' →</a>'+(n.try?' · <a href="#demo">try it live on this page ↓</a>':'')+'</p>';
+    if(!n.plain)h+='<button class="btn ghost" type="button" data-req="notes">Request my notes on this</button>';
+    info.innerHTML=h;var b=info.querySelector('[data-req]');if(b)b.addEventListener('click',function(){var t=[].filter.call(document.querySelectorAll('[data-req="notes"]'),function(x){return x!==b})[0];if(t)t.click()});
+  }
+  var ids=Object.keys(N).filter(function(i){return !N[i].plain});
+  var done=ids.filter(function(i){return LEARNED.indexOf(i)>-1}).length;
+  document.getElementById('amCount').textContent=done+' / '+ids.length;
+  var sl=document.getElementById('amStages'),stId=[['prompt','api','rag'],['tools','data'],['agents'],['guard','eval']];
+  STAGES.forEach(function(t,i){var li=document.createElement('li');li.textContent=t;
+    var d=i<4?stId[i].every(function(x){return LEARNED.indexOf(x)>-1}):FINAL_DONE;if(d)li.className='done';sl.appendChild(li)});
+  draw();pick(NOW[0]||'api');
+  var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(draw,120)});
 })();
 </script>
 </body>
