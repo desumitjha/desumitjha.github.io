@@ -489,6 +489,75 @@ dialog .note{font-size:13px;color:var(--ink-3)}
 .medal-cap{text-align:center;font-size:14px;color:var(--ink-2);margin:12px auto 0;min-height:3em;max-width:430px}
 @media (max-width:960px){.medal{max-width:380px}}
 @media (prefers-reduced-motion:reduce){.spin-a,.spin-b,.spin-c,.core-halo{animation:none}.flowin{display:none}}
+/* v3: RAG doodle empty state */
+.doodle-rag{width:100%;max-width:420px}
+.doodle-rag svg{width:100%;height:auto;display:block;overflow:visible}
+.doodle-rag path{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1s cubic-bezier(.6,0,.2,1) var(--d,0s)}
+.doodle-rag .dd-doc path{stroke:var(--silver)}
+.doodle-rag .dd-mag path{stroke:#22d3ee}
+.doodle-rag .dd-bub path{stroke:var(--brand)}
+.doodle-rag .dd-arw{stroke:var(--ink-3);stroke-dasharray:1}
+.doodle-rag .dd-spark{stroke:var(--gold);fill:color-mix(in srgb,var(--gold) 30%,transparent)}
+.doodle-rag .dd-dots circle{fill:var(--brand);opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(0);transition:opacity .4s,transform .4s cubic-bezier(.3,1.6,.5,1)}
+.doodle-rag .dd-dots circle:nth-child(1){transition-delay:1.5s}.doodle-rag .dd-dots circle:nth-child(2){transition-delay:1.6s}.doodle-rag .dd-dots circle:nth-child(3){transition-delay:1.7s}.doodle-rag .dd-dots circle:nth-child(4){transition-delay:1.8s}
+.doodle-rag text{font-family:var(--mono);font-size:11px;letter-spacing:.06em;fill:var(--ink-3);opacity:0;transition:opacity .6s 2.4s}
+.doodle-rag .dd-point text{fill:var(--brand);font-weight:600;transition-delay:3.2s}
+.doodle-rag p{margin:10px 0 0;color:var(--ink-3);font-size:14.5px;opacity:0;transform:translateY(6px);transition:opacity .6s .4s,transform .6s .4s}
+.doodle-rag.drawn path{stroke-dashoffset:0}
+.doodle-rag.drawn .dd-dots circle{opacity:1;transform:scale(1)}
+.doodle-rag.drawn text,.doodle-rag.drawn p{opacity:1;transform:none}
+.doodle-rag.drawn .dd-spark{animation:twk 2.4s 3.4s ease-in-out infinite}
+@keyframes twk{50%{transform:scale(1.25) rotate(20deg)}}
+.doodle-rag .dd-spark{transform-box:fill-box;transform-origin:center}
+.doodle-rag.gone{opacity:0;transform:translateY(-10px) scale(.98);transition:opacity .5s,transform .5s}
+@media (max-width:900px){.doodle-rag .dd-point{display:none}}
+@media (prefers-reduced-motion:reduce){.doodle-rag path{stroke-dashoffset:0}.doodle-rag text,.doodle-rag p,.doodle-rag .dd-dots circle{opacity:1;transform:none}}
+/* v4: CCAR-P architecture diagram */
+.arch-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:4px 20px;scrollbar-width:thin}
+.arch{min-width:760px}
+.arch svg{width:100%;height:auto;display:block;overflow:visible}
+.edge{fill:none;stroke:var(--line-2);stroke-width:1.6}
+.edge.flow{stroke:color-mix(in srgb,var(--brand) 60%,var(--line-2));stroke-dasharray:6 6;animation:edash 1.2s linear infinite}
+.edge.obs{stroke:var(--ink-3);stroke-dasharray:2 6;opacity:.8}
+@keyframes edash{to{stroke-dashoffset:-12}}
+.ah-f{fill:color-mix(in srgb,var(--brand) 60%,var(--line-2))}.ah-o{fill:var(--ink-3)}
+.cn{cursor:pointer;outline:none}
+.cn rect.box{fill:var(--surface);stroke:var(--line-2);stroke-width:1.5;transition:stroke .2s,stroke-width .2s}
+.cn.learned rect.box{stroke:var(--green)}
+.cn.now rect.box{stroke:var(--brand)}
+.cn.next rect.box{stroke-dasharray:5 5;fill:color-mix(in srgb,var(--surface) 45%,transparent)}
+.cn.plain rect.box{fill:var(--surface-2);stroke:var(--line-2)}
+.cn .glow{fill:none;stroke:var(--brand);stroke-width:6;opacity:0}
+.cn.now .glow{animation:nglow 2.4s ease-in-out infinite}
+@keyframes nglow{50%{opacity:.22}}
+.cn:hover rect.box,.cn:focus-visible rect.box{stroke:var(--brand)}
+.cn.sel rect.box{stroke-width:3}
+.cn .s{font-family:var(--mono);font-size:10px;letter-spacing:1.3px;font-weight:600;fill:var(--ink-3)}
+.cn .t{font-family:var(--sans);font-size:14px;font-weight:700;fill:var(--ink)}
+.cn .badge{stroke-width:2}
+.cn.learned .badge{fill:var(--green);stroke:var(--green)}
+.cn.now .badge{fill:var(--brand);stroke:var(--brand);animation:blink 1.4s infinite}
+.cn.next .badge{fill:none;stroke:var(--ink-3)}
+.cn .ck{fill:#fff;font-size:10px;font-weight:800;font-family:var(--sans)}
+.packet{filter:drop-shadow(0 0 6px currentColor)}
+.arch-cap{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;font-size:13px;color:var(--ink-3);margin:10px 0 18px}
+.arch-cap .pk{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:-6px}
+.arch-cap .pk.q{background:#818cf8}.arch-cap .pk.a{background:#34d399}
+.cc-detail{padding:24px;display:grid;grid-template-columns:230px 1fr 1fr;gap:26px;align-items:start}
+.cc-detail h3{font-size:22px;margin-top:8px}
+.cc-detail h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 6px;font-weight:600}
+.cc-detail ul{margin:0;padding-left:18px;color:var(--ink-2);font-size:14.5px}
+.cc-detail p{margin:0;color:var(--ink-2);font-size:14.5px}
+.cc-detail #cdKey{color:var(--ink);font-weight:500}
+.cd-stage{font-family:var(--mono);font-size:12px!important;color:var(--ink-3)!important;margin-top:4px!important}
+@media (max-width:900px){.cc-detail{grid-template-columns:1fr;gap:16px}}
+@media (prefers-reduced-motion:reduce){.edge.flow,.cn.now .glow,.cn.now .badge{animation:none}.packet{display:none}}
+.job-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.job-chips span{font-size:12px;padding:3px 9px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2)}
+.job-lesson{margin:12px 0 0;padding:10px 14px;border-radius:10px;background:color-mix(in srgb,var(--c,var(--brand)) 9%,transparent);border-left:3px solid var(--c,var(--brand));font-size:14px;color:var(--ink)}
+.pill .de{display:inline-flex;flex-direction:column;width:15px;height:11px;border-radius:2px;overflow:hidden;flex:none}
+.pill .de b{flex:1}.pill .de b:nth-child(1){background:#1a1a1a}.pill .de b:nth-child(2){background:#dd0000}.pill .de b:nth-child(3){background:#ffce00}
+.job-lesson b{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-right:6px}
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}.o-arc{stroke-dashoffset:0}.o-ms{opacity:1}}
@@ -524,6 +593,7 @@ dialog .note{font-size:13px;color:var(--ink-3)}
     <div>
       <div class="pills">
         <span class="pill"><i class="live"></i>Open to AI &amp; data roles in Germany</span>
+        <span class="pill"><i class="de" aria-hidden="true"><b></b><b></b><b></b></i>M.Sc. in Germany · Deutsch B1, studying B2 · no visa needed</span>
         <span class="pill"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg><span id="ccPill">Claude Certified Architect (CCAR-P) · exam 31 Oct 2026</span></span>
       </div>
       <h1><span class="hi">Hi, I'm Sumit.</span>I turn<span class="slot"><span class="rot g1" id="rotWord">data platforms</span></span>into <span class="ai-grad">AI products.</span></h1>
@@ -654,7 +724,30 @@ dialog .note{font-size:13px;color:var(--ink-3)}
         </div>
       </div>
       <div class="card panel out reveal" id="askOut">
-        <div class="out-empty"><div><div class="big">✦</div>Pick a question or paste a job ad.<br>The pipeline shows its work here.</div></div>
+        <div class="out-empty"><div class="doodle-rag" id="ragDoodle">
+          <svg viewBox="0 0 380 232" aria-hidden="true">
+            <g class="dd-doc">
+              <path style="--d:.05s" d="M40,60 h52 a6,6 0 0 1 6,6 v76 a6,6 0 0 1 -6,6 h-52 a6,6 0 0 1 -6,-6 v-76 a6,6 0 0 1 6,-6 z"/>
+              <path style="--d:.2s" d="M30,72 h58 a6,6 0 0 1 6,6 v78 a6,6 0 0 1 -6,6 h-58 a6,6 0 0 1 -6,-6 v-78 a6,6 0 0 1 6,-6 z"/>
+              <path style="--d:.45s" d="M38,92 h40 M38,104 h32 M38,116 h38 M38,128 h24 M38,140 h34"/>
+            </g>
+            <path class="dd-arw" style="--d:.8s" d="M104,120 C128,92 150,92 168,110 M159,104 l9,6 l-10,4"/>
+            <g class="dd-mag">
+              <path style="--d:1.1s" d="M222,118 a22,22 0 1 1 -44,0 a22,22 0 1 1 44,0"/>
+              <path style="--d:1.4s" d="M216,134 l18,18"/>
+            </g>
+            <g class="dd-dots"><circle cx="193" cy="112" r="2.6"/><circle cx="205" cy="109" r="2.6"/><circle cx="198" cy="125" r="2.6"/><circle cx="209" cy="122" r="2.6"/></g>
+            <path class="dd-arw" style="--d:1.7s" d="M244,112 C262,86 282,86 297,98 M288,92 l9,6 l-10,4"/>
+            <g class="dd-bub">
+              <path style="--d:2s" d="M300,70 h52 a10,10 0 0 1 10,10 v36 a10,10 0 0 1 -10,10 h-30 l-12,12 v-12 h-10 a10,10 0 0 1 -10,-10 v-36 a10,10 0 0 1 10,-10 z"/>
+              <path style="--d:2.4s" d="M315,98 l8,8 l16,-18"/>
+            </g>
+            <path class="dd-spark" style="--d:2.6s" d="M352,44 l3,8 l8,3 l-8,3 l-3,8 l-3,-8 l-8,-3 l8,-3 z"/>
+            <g class="dd-lbl"><text x="62" y="186" text-anchor="middle">documents</text><text x="200" y="186" text-anchor="middle">retrieve</text><text x="326" y="162" text-anchor="middle">grounded answer</text></g>
+            <g class="dd-point"><path class="dd-arw" style="--d:2.9s" d="M160,214 C128,228 78,224 44,206 M52,200 l-9,6 l8,7"/><text x="170" y="218">start with a question</text></g>
+          </svg>
+          <p>Pick a question or paste a job ad.<br>The pipeline shows its work here.</p>
+        </div></div>
       </div>
     </div>
   </div>
@@ -731,7 +824,7 @@ dialog .note{font-size:13px;color:var(--ink-3)}
       <div class="sec-head reveal" style="margin:0">
         <span class="kicker">My CCAR-P journey</span>
         <h2>Becoming a <span class="grad">Claude Certified Architect.</span></h2>
-        <p class="lede">The architecture I'm mastering, component by component. Tap any card to see what it covers, and the project where I've already used it.</p>
+        <p class="lede">The exam goes deep, so I learn it as one system, not a list of topics. This is the architecture I'm mastering: tap any component for what it covers, the key idea, a retail example, and where I've already used it.</p>
       </div>
       <div class="countdown reveal" id="countdown" aria-live="polite">
         <div class="cd-box acc"><b id="cdD">–</b><span>days to go</span></div>
@@ -740,7 +833,13 @@ dialog .note{font-size:13px;color:var(--ink-3)}
     </div>
     <div class="stages reveal" id="stages"></div>
     <div class="prog reveal" style="margin-bottom:16px"><span id="progTxt"></span><span class="pb"><i id="progBar" style="width:0"></i></span><span class="st done">Learned</span><span class="st now"><i class="pd"></i>Learning now</span><span class="st next">Up next</span></div>
-    <div class="comps" id="comps"></div>
+    <div class="arch-wrap reveal"><div class="arch" id="arch"><svg viewBox="0 48 1060 424" id="archSvg" role="group" aria-label="Claude architecture I am learning: tap a component"></svg></div></div>
+    <p class="arch-cap"><span class="pk q"></span>a question flows in through guardrails and the agent<span class="pk a"></span>a grounded answer comes back · tap any box</p>
+    <div class="card cc-detail reveal" id="ccDetail" aria-live="polite">
+      <div><span id="cdTag"></span><h3 id="cdName"></h3><p class="cd-stage" id="cdStage"></p><button class="btn btn-ghost btn-sm" data-req="notes" style="margin-top:12px">Request my notes on this</button></div>
+      <div><h4>What it covers</h4><ul id="cdList"></ul><h4 style="margin-top:14px">The key idea</h4><p id="cdKey"></p></div>
+      <div><h4>Retail example</h4><p id="cdEx"></p><h4 style="margin-top:14px">Where I've used it</h4><p id="cdProof"></p></div>
+    </div>
     <div class="src-grid">
       <div class="card reveal"><span class="tag">What I learn from</span><ul class="src-list">
         <li><b>CCAR-P exam prep with Timo Labs</b><span>Structured curriculum and practice exams</span></li>
@@ -797,17 +896,28 @@ dialog .note{font-size:13px;color:var(--ink-3)}
     </div>
     <div class="tl">
       <div class="card job reveal" style="--c:var(--gold)"><div class="job-h"><div><h3>Senior Expert</h3><div class="co">ALDI SÜD · Germany</div></div><span class="when">May 2022 → present</span></div>
-        <ul><li>Led the design and deployment of a cloud-native Azure data platform with Terraform across Dev/QA/Prod: the governed foundation that analytics and AI use cases build on.</li><li>Architected a Delta Lake medallion platform (Bronze/Silver/Gold) with optimised ELT pipelines in Azure Databricks and automated data-quality testing (Great Expectations, PyTest).</li><li>Enterprise CI/CD (GitLab) plus GDPR-compliant governance with Unity Catalog, RBAC, row-level security and PII masking.</li><li>Integrated Tealium CDP for real-time audience segmentation; turned business needs into technical designs with stakeholders (SMDQ, RoE).</li></ul></div>
+        <ul><li>Led the design and deployment of a cloud-native Azure data platform, built with Terraform across Dev/QA/Prod, for customer-interaction and behavioural datasets: the governed foundation that analytics and AI use cases build on.</li><li>Architected a Delta Lake platform with a medallion structure (Bronze/Silver/Gold) and optimised ELT pipelines in Azure Databricks, with automated data-quality testing (Great Expectations, PyTest).</li><li>Implemented enterprise CI/CD (GitLab) for infrastructure and data workloads, plus RBAC- and GDPR-compliant governance with Unity Catalog, row-level security and PII masking.</li><li>Integrated Tealium CDP into the platform for real-time audience segmentation.</li><li>Worked with business and technology stakeholders to define ingestion strategy and analytics data models for enterprise initiatives (SMDQ, RoE), translating business needs into technical designs.</li></ul>
+        <div class="job-chips"><span>Azure</span><span>Databricks</span><span>Delta Lake</span><span>Unity Catalog</span><span>PySpark</span><span>Terraform</span><span>GitLab CI/CD</span><span>Great Expectations</span><span>Tealium CDP</span></div>
+        <p class="job-lesson"><b>What it taught me</b>AI is only as good as the platform under it: governed, tested, reproducible data first.</p></div>
       <div class="card job reveal" style="--c:var(--silver)"><div class="job-h"><div><h3>Data Strategic Manager</h3><div class="co">The&amp;Partnership (Toyota &amp; Lexus) · Germany</div></div><span class="when">Aug 2020 → Mar 2022</span></div>
-        <ul><li>Built data pipelines on Google Cloud (Cloud Storage, Dataflow, BigQuery) and Power BI dashboards giving stakeholders KPI visibility across business units.</li><li>Applied regression, classification and clustering in Python to analyse customer trends.</li></ul></div>
+        <ul><li>Designed and built data pipelines on Google Cloud Platform (Cloud Storage, Dataflow, BigQuery) for marketing and business analytics.</li><li>Developed Power BI dashboards giving stakeholders KPI visibility across business units.</li><li>Applied machine-learning techniques (regression, classification, clustering) in Python to analyse customer trends and support data-driven decisions.</li></ul>
+        <div class="job-chips"><span>Google Cloud</span><span>BigQuery</span><span>Dataflow</span><span>Power BI</span><span>Python</span><span>ML basics</span></div>
+        <p class="job-lesson"><b>What it taught me</b>Data only matters when it answers a business question someone actually asked.</p></div>
       <div class="card job reveal" style="--c:var(--silver)"><div class="job-h"><div><h3>Executive, Data Analytics &amp; Engineering</h3><div class="co">KPMG · India</div></div><span class="when">Nov 2016 → Sep 2019</span></div>
-        <ul><li>Data preparation, modelling (Alteryx) and Power BI dashboards on client consulting engagements; large-scale data workflows under regulatory compliance.</li></ul></div>
+        <ul><li>Delivered data preparation, modelling (Alteryx) and Power BI dashboards on client consulting engagements.</li><li>Managed large-scale data workflows (Nuix, Relativity) under regulatory compliance for sensitive datasets.</li></ul>
+        <div class="job-chips"><span>Alteryx</span><span>Power BI</span><span>Nuix</span><span>Relativity</span><span>Client consulting</span></div>
+        <p class="job-lesson"><b>What it taught me</b>Consulting discipline: clear scope, sensitive data handled with care, deliverables clients trust.</p></div>
       <div class="card job reveal" style="--c:var(--bronze)"><div class="job-h"><div><h3>Consultant</h3><div class="co">Harman · India</div></div><span class="when">Jul 2015 → Oct 2016</span></div>
-        <ul><li>Data validation, T-SQL and Tableau visualisation for business analytics.</li></ul></div>
+        <ul><li>Data validation, T-SQL querying and Tableau visualisation for business analytics.</li></ul>
+        <div class="job-chips"><span>T-SQL</span><span>Tableau</span><span>Data validation</span></div>
+        <p class="job-lesson"><b>What it taught me</b>Validate before you visualise: a wrong number on a nice chart is still wrong.</p></div>
       <div class="card job reveal" style="--c:var(--bronze)"><div class="job-h"><div><h3>Associate</h3><div class="co">AXA · India</div></div><span class="when">Sep 2013 → Mar 2015</span></div>
-        <ul><li>Data extraction from AS400 (DB400), SQL Server and Excel-based business analytics.</li></ul></div>
+        <ul><li>Data extraction from AS400 servers (DB400), SQL Server data manipulation and Excel-based business analytics.</li></ul>
+        <div class="job-chips"><span>AS400 / DB400</span><span>SQL Server</span><span>Excel</span></div>
+        <p class="job-lesson"><b>What it taught me</b>Where it all started: getting data out of legacy systems and into people's hands.</p></div>
     </div>
-    <div class="edu">
+    
+<div class="edu">
       <div class="card reveal"><span class="tag">Master's · Germany</span><h3>M.Sc. Information Engineering &amp; Computer Science</h3><p>Hochschule Rhein-Waal · 2019–2021</p></div>
       <div class="card reveal"><span class="tag">Bachelor's · India</span><h3>B.Tech. Computer Science &amp; Engineering</h3><p>2009–2013</p></div>
       <div class="card reveal"><span class="tag">Languages</span><h3>English · Hindi · German</h3><p>English and Hindi fluent · German B1 (TestDaF), studying towards B2</p></div>
@@ -969,6 +1079,10 @@ dialog .note{font-size:13px;color:var(--ink-3)}
   sBtns.forEach(function(b){b.addEventListener('click',function(){showStage(+b.getAttribute('data-i'),true)})});
   showStage(0,false);
 
+  // ---------- RAG doodle: draws in on scroll, undraws when you scroll away ----------
+  var dd=document.getElementById('ragDoodle');
+  if(dd&&'IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){dd.classList.toggle('drawn',e.isIntersecting)})},{threshold:.55}).observe(dd);}else if(dd){dd.classList.add('drawn')}
+
   // ---------- tabs ----------
   var tabs=[].slice.call(document.querySelectorAll('.tabs button'));
   tabs.forEach(function(b){b.addEventListener('click',function(){tabs.forEach(function(x){x.classList.toggle('on',x===b)});var q=b.getAttribute('data-tab')==='q';document.getElementById('tabQ').hidden=!q;document.getElementById('tabJ').hidden=q;})});
@@ -1080,10 +1194,48 @@ dialog .note{font-size:13px;color:var(--ink-3)}
   var nL=ORDER.filter(function(i){return cst(i)==='learned'}).length;
   document.getElementById('progTxt').textContent=nL+' / '+ORDER.length+' components learned';
   document.getElementById('progBar').style.width=(nL/ORDER.length*100)+'%';
-  var TAG={learned:'<span class="st done">✓ Learned</span>',now:'<span class="st now"><i class="pd"></i>Learning now</span>',next:'<span class="st next">Up next</span>'};
-  document.getElementById('comps').innerHTML=ORDER.map(function(id){var c=C[id],s=cst(id);return '<button class="comp reveal '+s+'" data-id="'+id+'"><div class="ct">'+TAG[s]+'</div><h3>'+esc(c.t)+'</h3><ul>'+c.b.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>'+(c.proof?'<a class="proofl" href="'+c.proof[1]+'" target="_blank" rel="noopener">'+esc(c.proof[0])+' ↗</a>':'')+'<span class="more">tap to open</span></button>'}).join('');
-  document.querySelectorAll('.comp').forEach(function(b){b.addEventListener('click',function(e){if(e.target.closest('a'))return;b.classList.toggle('open')})});
-  watch(document.getElementById('comps'));
+  var TAGS={learned:'<span class="st done">✓ Learned</span>',now:'<span class="st now"><i class="pd"></i>Learning now</span>',next:'<span class="st next">Up next</span>'};
+  var KEY={api:'The model is stateless: every call carries the whole conversation, inside a token budget.',prompt:'Context is a budget: clear instructions first, then examples, then only the data that matters.',rag:'Retrieve first, then generate: ground every answer in sources, and allow “I don’t know”.',tools:'The model decides when to call a tool; my code runs it and hands the result back.',data:'Least privilege: the AI only sees what the user is allowed to see.',agents:'An agent is a loop: think, act with a tool, observe, repeat, until done or handed to a human.',guard:'Check inputs and outputs separately; never rely on the model alone to enforce policy.',eval:'If you can’t measure it, you can’t ship it: evals first, then cost and latency.'};
+  var EX={api:'A store-support assistant that answers in a fixed JSON format the till system can read.',prompt:'A system prompt that makes the assistant answer like a store manager: short, polite, policy first.',rag:'Finding the right returns policy when a customer writes “money back” instead of “refund”.',tools:'Checking live stock in a store through a tool call instead of guessing.',data:'Read-only, role-based access to governed sales data in the lakehouse.',agents:'A damaged-delivery complaint handled end to end: look up the order, check policy, draft a refund, ask a human to approve.',guard:'Blocking a prompt that tries to pull other customers’ data, and masking PII in answers.',eval:'A test set of real customer questions scored before every release; caching frequent answers to cut cost.'};
+  var STAGEOF={api:'Stage 1',prompt:'Stage 1',rag:'Stage 1',tools:'Stage 2',data:'Stage 2',agents:'Stage 3',guard:'Stage 4',eval:'Stage 4'};
+  var POS={user:[100,260],guard:[305,260],agents:[510,260],api:[715,260],prompt:[715,95],rag:[715,425],tools:[950,178],data:[950,342],eval:[510,425]};
+  var EDGES=[['user','guard','flow'],['guard','agents','flow'],['agents','api','flow'],['prompt','api','flow'],['rag','api','flow'],['api','tools','flow'],['tools','data','flow'],['data','rag','flow'],['eval','agents','obs'],['eval','api','obs']];
+  var W=184,Hh=62,NS='http://www.w3.org/2000/svg',svg=document.getElementById('archSvg');
+  function mk(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+  var defs=mk('defs',{},svg);
+  [['f','ah-f'],['o','ah-o']].forEach(function(m){var mm=mk('marker',{id:'am-'+m[0],viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:7,markerHeight:7,orient:'auto'},defs);mk('path',{d:'M0,0 L10,5 L0,10 z','class':m[1]},mm)});
+  EDGES.forEach(function(e){var a=POS[e[0]],b=POS[e[1]],dx=b[0]-a[0],dy=b[1]-a[1];
+    function cut(p,sx,sy){var s=Math.min(dx?(W/2+6)/Math.abs(dx):1e9,dy?(Hh/2+6)/Math.abs(dy):1e9);return [p[0]+sx*dx*s,p[1]+sy*dy*s]}
+    var p1=cut(a,1,1),p2=cut(b,-1,-1);
+    mk('line',{x1:p1[0].toFixed(1),y1:p1[1].toFixed(1),x2:p2[0].toFixed(1),y2:p2[1].toFixed(1),'class':'edge '+e[2],'marker-end':'url(#am-'+(e[2]==='flow'?'f':'o')+')'},svg)});
+  var pk=mk('circle',{r:6,'class':'packet',fill:'#818cf8'},svg);
+  if(!reduce){var am=mk('animateMotion',{dur:'5s',repeatCount:'indefinite',path:'M200,260 H615 H200',keyPoints:'0;1;1;0;0',keyTimes:'0;.4;.5;.9;1',calcMode:'linear'},pk);mk('animate',{attributeName:'fill',values:'#818cf8;#34d399;#818cf8',keyTimes:'0;.45;.95',dur:'5s',repeatCount:'indefinite',calcMode:'discrete'},pk);}else{pk.setAttribute('cx',-99)}
+  var NAMES={user:'Business request'};
+  var nodes={};
+  ['user'].concat(ORDER).forEach(function(id){
+    var p=POS[id],s=id==='user'?'plain':cst(id);
+    var g=mk('g',{'class':'cn '+s,'data-id':id,tabindex:id==='user'?-1:0,role:'button','aria-label':(NAMES[id]||C[id].t)},svg);
+    mk('rect',{'class':'glow',x:p[0]-W/2-3,y:p[1]-Hh/2-3,width:W+6,height:Hh+6,rx:17},g);
+    mk('rect',{'class':'box',x:p[0]-W/2,y:p[1]-Hh/2,width:W,height:Hh,rx:14},g);
+    var st=mk('text',{'class':'s',x:p[0]-W/2+16,y:p[1]-6},g);st.textContent=id==='user'?'START':STAGEOF[id].toUpperCase()+(s==='now'?' · NOW':s==='learned'?' · DONE':'');
+    var tt=mk('text',{'class':'t',x:p[0]-W/2+16,y:p[1]+15},g);tt.textContent=NAMES[id]||C[id].t;
+    if(id!=='user'){mk('circle',{'class':'badge',cx:p[0]+W/2-16,cy:p[1]-Hh/2+16,r:6},g);if(s==='learned'){var ck=mk('text',{'class':'ck',x:p[0]+W/2-16,y:p[1]-Hh/2+19.5,'text-anchor':'middle'},g);ck.textContent='✓';}}
+    nodes[id]=g;
+  });
+  function showComp(id,scroll){
+    ORDER.forEach(function(k){nodes[k].classList.toggle('sel',k===id)});
+    var c=C[id],s=cst(id);
+    document.getElementById('cdTag').innerHTML=TAGS[s];
+    document.getElementById('cdName').textContent=c.t;
+    document.getElementById('cdStage').textContent=STAGEOF[id]+' · '+STG.filter(function(x){return x[0]===STAGEOF[id]})[0][1];
+    document.getElementById('cdList').innerHTML=c.b.map(function(x){return '<li>'+esc(x)+'</li>'}).join('');
+    document.getElementById('cdKey').textContent=KEY[id];
+    document.getElementById('cdEx').textContent=EX[id];
+    document.getElementById('cdProof').innerHTML=c.proof?'<a href="'+c.proof[1]+'" target="_blank" rel="noopener">'+esc(c.proof[0])+' ↗</a>':(s==='next'?'Not yet: this is up next on my path.':'In progress: I am learning this now, project to follow.');
+    if(scroll&&window.innerWidth<900) document.getElementById('ccDetail').scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  ORDER.forEach(function(id){var g=nodes[id];g.addEventListener('click',function(){showComp(id,true)});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();showComp(id,true)}})});
+  showComp(NOW[0]||'api',false);
 
   // ---------- insights ----------
   var INS=[
