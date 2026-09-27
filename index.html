@@ -454,6 +454,41 @@ dialog input[type=text]{margin-top:8px;font-size:14px;padding:10px 12px}
 dialog textarea{min-height:110px;font-size:13.5px}
 dialog .note{font-size:13px;color:var(--ink-3)}
 
+/* v2: word slot + medallion */
+.hero-grid>*{min-width:0}
+.slot{display:block;position:relative;height:1.14em}
+.slot .rot{position:absolute;left:0;top:0;white-space:nowrap}
+.rot.enter{opacity:0;transform:translateY(12px);transition:none}
+.medal{position:relative;width:100%;max-width:470px;margin:0 auto}
+.medal svg{width:100%;height:auto;display:block;overflow:visible}
+.medal .band{fill:none;stroke-width:28;stroke-opacity:.13}
+.medal .edge{fill:none;stroke-width:1;stroke-opacity:.45}
+.medal .rt{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:1px}
+.r-br .band,.r-br .edge{stroke:var(--bronze)}.r-br .rt{fill:var(--bronze)}
+.r-si .band,.r-si .edge{stroke:var(--silver)}.r-si .rt{fill:var(--silver)}
+.r-go .band,.r-go .edge{stroke:var(--gold)}.r-go .rt{fill:var(--gold)}
+.medal .ring,.medal .core-g{transition:opacity .5s ease}
+.medal.focus .ring:not(.hl){opacity:.28}
+.medal.focus .core-g:not(.hl){opacity:.75}
+.medal .ring.hl .band{stroke-opacity:.3}
+.spin-a,.spin-b,.spin-c{transform-box:view-box;transform-origin:220px 220px}
+.spin-a{animation:spin 110s linear infinite}
+.spin-b{animation:spin 80s linear infinite reverse}
+.spin-c{animation:spin 60s linear infinite}
+.s-cg1{stop-color:color-mix(in srgb,var(--ai) 30%,var(--surface))}.s-cg2{stop-color:var(--surface)}
+.core-c{fill:url(#coreG);stroke:color-mix(in srgb,var(--ai) 55%,var(--line));stroke-width:1.5}
+.core-halo{fill:var(--ai);opacity:.22;transform-box:fill-box;transform-origin:center;animation:halo 3.2s ease-out infinite}
+@keyframes halo{0%{transform:scale(1);opacity:.28}100%{transform:scale(1.25);opacity:0}}
+.sj{font-family:var(--sans);font-weight:800;font-size:68px;letter-spacing:-4px;fill:url(#sjGrad)}
+.sj-sub{font-family:var(--mono);font-size:9.5px;letter-spacing:2.4px;font-weight:700;fill:var(--ai)}
+.mlegend{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:14px}
+.ml{font:inherit;display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);font-size:13px;font-weight:600;cursor:pointer;transition:border-color .2s,color .2s}
+.ml i{width:9px;height:9px;border-radius:50%}
+.ml b{font-family:var(--mono);font-size:11px;color:var(--ink-3);font-weight:600}
+.ml.on,.ml:hover{color:var(--ink);border-color:var(--brand)}
+.medal-cap{text-align:center;font-size:14px;color:var(--ink-2);margin:12px auto 0;min-height:3em;max-width:430px}
+@media (max-width:960px){.medal{max-width:380px}}
+@media (prefers-reduced-motion:reduce){.spin-a,.spin-b,.spin-c,.core-halo{animation:none}.flowin{display:none}}
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}.o-arc{stroke-dashoffset:0}.o-ms{opacity:1}}
@@ -491,7 +526,7 @@ dialog .note{font-size:13px;color:var(--ink-3)}
         <span class="pill"><i class="live"></i>Open to AI roles in Germany</span>
         <span class="pill"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg><span id="ccPill">Claude Certified Architect (CCAR-P) · exam 31 Oct 2026</span></span>
       </div>
-      <h1><span class="hi">Hi, I'm Sumit.</span>I turn<br><span class="rot g1" id="rotWord">data platforms</span><br>into <span class="ai-grad">AI products.</span></h1>
+      <h1><span class="hi">Hi, I'm Sumit.</span>I turn<span class="slot"><span class="rot g1" id="rotWord">data platforms</span></span>into <span class="ai-grad">AI products.</span></h1>
       <p class="lede">10+ years in data and IT, from analytics and consulting (KPMG) to Senior Expert for cloud data platforms at ALDI SÜD. Now building GenAI: <strong>RAG, tool use and agentic workflows</strong>, from the business problem to a solution that runs in production.</p>
       <div class="ask">
         <p class="ask-q">So, what's blocking your AI?</p>
@@ -511,30 +546,34 @@ dialog .note{font-size:13px;color:var(--ink-3)}
 
     <div class="hero-visual" id="heroVisual">
       <div class="orbit-pane">
-        <div class="orbit" role="img" aria-label="Career as a medallion architecture: bronze 2013 analytics and BI, silver 2016 data engineering, gold 2022 cloud and governance, now applied AI">
-          <svg viewBox="-60 -14 560 474" aria-hidden="true">
+        <div class="medal" id="medal" role="img" aria-label="Career rings: 2013 analytics and BI, 2016 data engineering, 2022 cloud and governance, and at the core applied AI now">
+          <svg viewBox="0 0 440 440" aria-hidden="true">
             <defs>
-              <linearGradient id="oGrad" gradientUnits="userSpaceOnUse" x1="70" y1="0" x2="370" y2="0"><stop offset="0" class="s-br"/><stop offset=".34" class="s-si"/><stop offset=".62" class="s-go"/><stop offset=".85" class="s-ai"/><stop offset="1" class="s-cy"/></linearGradient>
-              <linearGradient id="mGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="s-ai"/><stop offset="1" class="s-cy"/></linearGradient>
-              <radialGradient id="coreGlow"><stop offset="0" class="s-glow"/><stop offset="1" class="s-glow0"/></radialGradient>
+              <path id="pR1" d="M220,35 A185,185 0 1,1 220,405 A185,185 0 1,1 220,35"/>
+              <path id="pR2" d="M220,70 A150,150 0 1,1 220,370 A150,150 0 1,1 220,70"/>
+              <path id="pR3" d="M220,103 A117,117 0 1,1 220,337 A117,117 0 1,1 220,103"/>
+              <radialGradient id="coreG" cx="50%" cy="40%" r="65%"><stop offset="0" class="s-cg1"/><stop offset="1" class="s-cg2"/></radialGradient>
+              <linearGradient id="sjGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#818cf8"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
             </defs>
-            <g class="spin"><circle class="o-outer" cx="220" cy="220" r="202"/><circle class="comet" cx="422" cy="220" r="4"/></g>
-            <circle class="o-track" cx="220" cy="220" r="150"/>
-            <path id="arcPath" class="o-arc" pathLength="1" d="M113.9,326.1 A150,150 0 1 1 334.9,316.4"/>
-            <circle class="particle" r="3"><animateMotion dur="3.6s" begin="0s" repeatCount="indefinite"><mpath href="#arcPath"/></animateMotion></circle>
-            <circle class="particle" r="2.4"><animateMotion dur="3.6s" begin="-1.2s" repeatCount="indefinite"><mpath href="#arcPath"/></animateMotion></circle>
-            <circle class="particle" r="2"><animateMotion dur="3.6s" begin="-2.4s" repeatCount="indefinite"><mpath href="#arcPath"/></animateMotion></circle>
-            <circle cx="220" cy="220" r="140" fill="url(#coreGlow)"/>
-            <circle class="o-core" cx="220" cy="220" r="112"/>
-            <text class="o-mono" x="220" y="246" text-anchor="middle">SJ</text>
-            <text class="o-name" x="220" y="276" text-anchor="middle">PIPELINE → PROMPT</text>
-            <g class="o-ms" style="--d:1s"><circle class="o-dot br" cx="105.1" cy="316.4" r="6.5"/><text class="o-yr br" x="86" y="338" text-anchor="end">2013 · BRONZE</text><text class="o-lb" x="86" y="357" text-anchor="end">Analytics &amp; BI</text></g>
-            <g class="o-ms" style="--d:1.4s"><circle class="o-dot si" cx="97.1" cy="134" r="6.5"/><text class="o-yr si" x="76" y="110" text-anchor="end">2016 · SILVER</text><text class="o-lb" x="76" y="129" text-anchor="end">Data engineering</text></g>
-            <g class="o-ms" style="--d:1.8s"><circle class="o-dot go" cx="271.3" cy="79" r="6.5"/><text class="o-yr go" x="290" y="46">2022 · GOLD</text><text class="o-lb" x="290" y="65">Cloud &amp; governance</text></g>
-            <g class="o-ms now" style="--d:2.4s"><circle class="o-pulse" cx="334.9" cy="316.4" r="8"/><circle class="o-dot" cx="334.9" cy="316.4" r="8"/><text class="o-yr ai" x="356" y="338">NOW</text><text class="o-lb" x="356" y="357">Applied AI</text></g>
+            <g class="ring r-br" data-r="br"><g class="spin-a"><circle class="band" cx="220" cy="220" r="185"/><circle class="edge" cx="220" cy="220" r="200"/><circle class="edge" cx="220" cy="220" r="170"/><text class="rt" dominant-baseline="central"><textPath href="#pR1" textLength="1150" lengthAdjust="spacing">2013 — ANALYTICS &amp; BI — AXA · HARMAN — FIRST DASHBOARDS ✦ 2013 — ANALYTICS &amp; BI — AXA · HARMAN — FIRST DASHBOARDS ✦</textPath></text></g></g>
+            <g class="ring r-si" data-r="si"><g class="spin-b"><circle class="band" cx="220" cy="220" r="150"/><circle class="edge" cx="220" cy="220" r="164"/><circle class="edge" cx="220" cy="220" r="136"/><text class="rt" dominant-baseline="central"><textPath href="#pR2" textLength="930" lengthAdjust="spacing">2016 — DATA ENGINEERING — KPMG · THE&amp;PARTNERSHIP ✦ 2016 — DATA ENGINEERING — KPMG ✦</textPath></text></g></g>
+            <g class="ring r-go" data-r="go"><g class="spin-c"><circle class="band" cx="220" cy="220" r="117"/><circle class="edge" cx="220" cy="220" r="130"/><circle class="edge" cx="220" cy="220" r="104"/><text class="rt" dominant-baseline="central"><textPath href="#pR3" textLength="725" lengthAdjust="spacing">2022 — CLOUD &amp; GOVERNANCE — ALDI SÜD ✦ 2022 — GOVERNED LAKEHOUSE ✦</textPath></text></g></g>
+            <g class="flowin" aria-hidden="true">
+              <g transform="rotate(35 220 220)"><circle cx="220" cy="22" r="3"><animate attributeName="cy" values="22;124" dur="3.2s" begin="0s" repeatCount="indefinite"/><animate attributeName="fill" values="#d9925f;#c5cbd8;#f2c14e;#22d3ee" dur="3.2s" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="3.2s" begin="0s" repeatCount="indefinite"/></circle></g>
+              <g transform="rotate(145 220 220)"><circle cx="220" cy="22" r="3"><animate attributeName="cy" values="22;124" dur="3.2s" begin="-0.8s" repeatCount="indefinite"/><animate attributeName="fill" values="#d9925f;#c5cbd8;#f2c14e;#22d3ee" dur="3.2s" begin="-0.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="3.2s" begin="-0.8s" repeatCount="indefinite"/></circle></g>
+              <g transform="rotate(235 220 220)"><circle cx="220" cy="22" r="3"><animate attributeName="cy" values="22;124" dur="3.2s" begin="-1.6s" repeatCount="indefinite"/><animate attributeName="fill" values="#d9925f;#c5cbd8;#f2c14e;#22d3ee" dur="3.2s" begin="-1.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="3.2s" begin="-1.6s" repeatCount="indefinite"/></circle></g>
+              <g transform="rotate(310 220 220)"><circle cx="220" cy="22" r="3"><animate attributeName="cy" values="22;124" dur="3.2s" begin="-2.4s" repeatCount="indefinite"/><animate attributeName="fill" values="#d9925f;#c5cbd8;#f2c14e;#22d3ee" dur="3.2s" begin="-2.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="3.2s" begin="-2.4s" repeatCount="indefinite"/></circle></g>
+            </g>
+            <g class="core-g" data-r="ai"><circle class="core-halo" cx="220" cy="220" r="96"/><circle class="core-c" cx="220" cy="220" r="96"/><text class="sj" x="220" y="232" text-anchor="middle">SJ</text><text class="sj-sub" x="220" y="262" text-anchor="middle">NOW · APPLIED AI</text></g>
           </svg>
         </div>
-        <p class="orbit-cap">My career as a medallion architecture: <i class="br">bronze</i> → <i class="si">silver</i> → <i class="go">gold</i> → <i class="ai">AI</i></p>
+        <div class="mlegend" role="group" aria-label="Career layers">
+          <button class="ml" data-r="br"><i style="background:var(--bronze)"></i><b>2013</b>Analytics</button>
+          <button class="ml" data-r="si"><i style="background:var(--silver)"></i><b>2016</b>Engineering</button>
+          <button class="ml" data-r="go"><i style="background:var(--gold)"></i><b>2022</b>Governance</button>
+          <button class="ml" data-r="ai"><i style="background:linear-gradient(135deg,#818cf8,#22d3ee)"></i><b>Now</b>Applied AI</button>
+        </div>
+        <p class="medal-cap" id="medalCap">Ten years, refined layer by layer: raw data at the edge, AI at the core.</p>
       </div>
       <div class="board-pane">
         <div class="card board" aria-live="polite">
@@ -850,9 +889,9 @@ dialog .note{font-size:13px;color:var(--ink-3)}
   watch();
 
   // ---------- hero: rotating word + problem picker ----------
-  var WC={'data platforms':'g1','messy data':'g2','business questions':'g3','company documents':'g4','prototypes':'g5','business needs':'g4'};
+  var WC={'data platforms':'g1','messy data':'g2','business ideas':'g3','documents':'g4','prototypes':'g5','business needs':'g4'};
   var rot=document.getElementById('rotWord'), rotTimer=null;
-  function setWord(w){if(rot.textContent===w)return;rot.classList.add('out');setTimeout(function(){rot.textContent=w;rot.className='rot '+(WC[w]||'g3')},250);}
+  function setWord(w){if(rot.textContent===w)return;rot.classList.add('out');setTimeout(function(){rot.textContent=w;rot.className='rot enter '+(WC[w]||'g3');void rot.offsetWidth;rot.classList.remove('enter')},250);}
   var LENS={
     pilot:{word:'prototypes',title:'Sumit Kumar Jha · AI Solutions, from pilot to production',
       answer:'Most AI pilots stall on data and operations, not on the model. I have spent years on the production side: Terraform-deployed Azure platforms across Dev/QA/Prod, CI/CD and automated data-quality tests. I bring that discipline to AI: <b>evaluation, guardrails and a clean hand-over to operations.</b> Building now: a self-healing RAG, then an LLM eval pipeline.',
@@ -860,7 +899,7 @@ dialog .note{font-size:13px;color:var(--ink-3)}
     data:{word:'data platforms',title:'Sumit Kumar Jha · Data & AI Engineering',
       answer:'Then you need someone who has built the foundation. At ALDI SÜD I architected a Delta Lake medallion platform on Azure Databricks with <b>Unity Catalog governance, row-level security and PII masking</b>, plus automated data-quality tests. Grounded AI answers need exactly this: governed, trustworthy data.',
       board:{t:'Making data AI-ready',s:'Azure Databricks · Delta Lake · Unity Catalog',f:'Built at ALDI SÜD, plus the AI layer I am adding',steps:[['Land it','Raw data ingested as-is, batch and event-driven'],['Clean & test it','Great Expectations and PyTest on every load'],['Govern it','Unity Catalog, RBAC, row-level security, PII masking'],['Serve it to AI','Embeddings and retrieval on trusted, governed data']]}},
-    usecase:{word:'business questions',title:'Sumit Kumar Jha · AI Consultant',
+    usecase:{word:'business ideas',title:'Sumit Kumar Jha · AI Consultant',
       answer:'Start with the business problem, not the model. I clarify the need with stakeholders, <b>score value and feasibility</b>, prioritise, and only then build. Consulting at KPMG and data strategy for Toyota & Lexus taught me to turn fuzzy asks into clear scope. Then a small RAG or agent prototype proves it with evidence.',
       board:{t:'Picking the right AI use case',s:'Discovery · value · feasibility · proof',f:'The approach I use in my own projects',steps:[['Start with the pain','Stakeholder interviews in their own words'],['Score it','Value, data availability, risk and effort'],['Prototype small','A RAG or agent prototype in days, not months'],['Decide with evidence','Go or no-go on measured results']]}},
     bridge:{word:'business needs',title:'Sumit Kumar Jha · AI Solutions & Consulting',
@@ -898,7 +937,15 @@ dialog .note{font-size:13px;color:var(--ink-3)}
   document.getElementById('lensShare').addEventListener('click',function(){var t=location.href.split('#')[0];if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){toast('Link to this version copied')},function(){toast(t)})}else toast(t)});
   var startRole=null;try{startRole=new URLSearchParams(location.search).get('role')}catch(e){}
   if(startRole&&LENS[startRole]) setLens(startRole,false);
-  else if(!reduce){var words=['data platforms','messy data','business questions','company documents','prototypes'],wi=0;rotTimer=setInterval(function(){wi=(wi+1)%words.length;setWord(words[wi])},2600);}
+  else if(!reduce){var words=['data platforms','messy data','business ideas','documents','prototypes'],wi=0;rotTimer=setInterval(function(){wi=(wi+1)%words.length;setWord(words[wi])},2600);}
+
+  // ---------- medallion ----------
+  var medal=document.getElementById('medal'), mls=[].slice.call(document.querySelectorAll('.ml')), mTimer=null, mi=3;
+  var CAP={br:'2013 · Analytics & BI at AXA and Harman: raw data, first reports and dashboards.',si:'2016 · Data engineering at KPMG and The&Partnership: clean, tested pipelines.',go:'2022 · Cloud & governance at ALDI SÜD: a governed Azure Databricks lakehouse.',ai:'Now · the core: applied AI. RAG, tool use and agents, built on that governed foundation.'};
+  var MORD=['br','si','go','ai'];
+  function focusRing(k){medal.classList.add('focus');medal.querySelectorAll('svg [data-r]').forEach(function(el){el.classList.toggle('hl',el.getAttribute('data-r')===k)});mls.forEach(function(b){b.classList.toggle('on',b.getAttribute('data-r')===k)});document.getElementById('medalCap').textContent=CAP[k];}
+  mls.forEach(function(b){b.addEventListener('click',function(){clearInterval(mTimer);focusRing(b.getAttribute('data-r'))})});
+  if(!reduce){setTimeout(function(){focusRing('br');mi=0;mTimer=setInterval(function(){mi=(mi+1)%4;focusRing(MORD[mi])},3200)},1800);}
 
   // ---------- pipeline to prompt ----------
   var STAGES=[
