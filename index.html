@@ -568,6 +568,25 @@ dialog .note{font-size:13px;color:var(--ink-3)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}.o-arc{stroke-dashoffset:0}.o-ms{opacity:1}}
 .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:14px;opacity:0;transition:all .3s;z-index:99;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%)}
+/* v5: Anthropic Academy */
+.academy{margin-top:28px;padding:26px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.academy::before{content:"";position:absolute;right:-90px;top:-90px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,var(--glow-a),transparent 70%);pointer-events:none}
+.ac-head{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:20px;position:relative}
+.ac-id{display:flex;align-items:center;gap:16px}
+.ac-num{flex:none;width:64px;height:64px;border-radius:18px;display:grid;place-items:center;font-size:28px;font-weight:800;letter-spacing:-.04em;color:#fff;background:linear-gradient(135deg,#c7773f,#6366f1 55%,#22d3ee);box-shadow:var(--shadow)}
+.ac-id h3{font-size:22px;margin-top:4px}
+.ac-id p{margin:4px 0 0;font-size:14px;color:var(--ink-2)}
+.ac-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;position:relative}
+@media (max-width:1000px){.ac-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.ac-grid{grid-template-columns:1fr}}
+.ac{padding:16px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line);border-top:3px solid var(--c);transition:transform .15s,border-color .15s}
+.ac:hover{transform:translateY(-3px);border-color:var(--c)}
+.ac-t{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:700;font-size:15px;margin-bottom:10px}
+.ac-t b{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:999px;color:var(--c);background:color-mix(in srgb,var(--c) 14%,transparent)}
+.ac ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:13.5px;color:var(--ink-2)}
+.ac li{display:flex;gap:8px}
+.ac li::before{content:"✓";color:var(--green);font-weight:800;flex:none}
+.ac-foot{margin:16px 0 0;font-size:13px;color:var(--ink-3);position:relative}
 </style>
 </head>
 <body>
@@ -819,6 +838,22 @@ dialog .note{font-size:13px;color:var(--ink-3)}
       <div class="cert ms"><span class="b">MS</span><span><b>Azure Data Engineer Associate</b> (DP‑203)</span></div>
       <div class="cert ms"><span class="b">MS</span><span><b>Azure Data Fundamentals</b> (DP‑900)</span></div>
       <div class="cert"><span class="b">T</span><span><b>Tealium CDP</b> certified</span></div>
+    </div>
+    <div class="academy reveal">
+      <div class="ac-head">
+        <div class="ac-id">
+          <span class="ac-num">18</span>
+          <div><span class="kicker">Anthropic Academy · completed</span><h3>Certified in building with Claude</h3><p>API, agents, MCP and cloud deployment: the stack behind my GenAI projects.</p></div>
+        </div>
+        <a class="btn btn-ghost btn-sm" href="https://anthropic.skilljar.com/" target="_blank" rel="noopener">Anthropic Academy ↗</a>
+      </div>
+      <div class="ac-grid">
+        <div class="ac" style="--c:var(--ai)"><div class="ac-t">Agents &amp; API<b>6</b></div><ul><li>Building with the Claude API</li><li>Claude Code in Action</li><li>Claude Code 101</li><li>Introduction to Agent Skills</li><li>Introduction to Subagents</li><li>Working with Claude Fable 5.1</li></ul></div>
+        <div class="ac" style="--c:#22d3ee"><div class="ac-t">Model Context Protocol<b>2</b></div><ul><li>Introduction to MCP</li><li>MCP: Advanced Topics</li></ul></div>
+        <div class="ac" style="--c:var(--gold)"><div class="ac-t">Cloud &amp; Enterprise<b>4</b></div><ul><li>Claude with Amazon Bedrock</li><li>Claude on Google Cloud</li><li>Introduction to Claude Cowork</li><li>Partner Basecamp</li></ul></div>
+        <div class="ac" style="--c:var(--teal)"><div class="ac-t">AI Fluency<b>6</b></div><ul><li>AI Fluency: Framework &amp; Foundations</li><li>AI Fluency for Builders</li><li>AI Fluency for Educators</li><li>Teaching AI Fluency</li><li>AI Fluency for Nonprofits</li><li>Claude 101</li></ul></div>
+      </div>
+      <p class="ac-foot">Next step → Claude Certified Architect – Professional (CCAR-P), exam 31 Oct 2026.</p>
     </div>
   </div>
 </section>
