@@ -10,9 +10,6 @@
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#070b17">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236366f1'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Ctext x='16' y='21' font-family='Arial,sans-serif' font-weight='700' font-size='13' fill='white' text-anchor='middle'%3ESJ%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f6f7fb; --bg-2:#eef0f7; --surface:#ffffff; --surface-2:#f1f3f9; --line:#dde2ee; --line-2:#c9d0e2;
@@ -793,7 +790,7 @@ dialog .note{font-size:13px;color:var(--ink-3)}
         <p>A command-line tool that reads a text file and summarises it with an LLM. Secrets in an environment file, pinned dependencies, unit tests and a CI workflow.</p>
         <div class="term" aria-hidden="true"><div class="d"><i></i><i></i><i></i></div><span class="pr">$</span> python hello.py notes.txt<br><span class="mut">› reading notes.txt …</span><br><span class="mut">› calling the LLM API</span><br><span class="ok">✓ summary ready</span></div>
         <div class="chips"><span class="chip">google-genai</span><span class="chip">python-dotenv</span><span class="chip">pytest</span><span class="chip">CI</span></div>
-        <a class="go" href="https://github.com/desumitjha/artificial_intelligence_urai/tree/main/01-document-summarizer" target="_blank" rel="noopener">View code →</a>
+        <a class="go" href="#request" data-req="code">View code →</a>
       </article>
       <article class="card pj big reveal">
         <div class="pj-top"><span class="tag">Project 2 · Jupyter · Embeddings</span><span class="st done">✓ Shipped</span></div>
@@ -801,7 +798,7 @@ dialog .note{font-size:13px;color:var(--ink-3)}
         <p>A full retrieval-augmented generation pipeline, built and printed cell by cell so every step is inspectable, not hidden in a framework.</p>
         <div class="mini-rag" aria-hidden="true"><span>chunk</span><em>→</em><span class="hl">embed · 3072‑d</span><em>→</em><span>cosine top‑K</span><em>→</em><span>augment</span><em>→</em><span class="hl">grounded answer</span></div>
         <div class="chips"><span class="chip">Embeddings</span><span class="chip">Cosine similarity</span><span class="chip">Prompt augmentation</span></div>
-        <a class="go" href="https://github.com/desumitjha/artificial_intelligence_urai/tree/main/02-rag-from-scratch" target="_blank" rel="noopener">View code →</a>
+        <a class="go" href="#request" data-req="code">View code →</a>
       </article>
       <article class="card pj sm reveal">
         <div class="pj-top"><span class="tag">Next up</span><span class="st now"><i class="pd"></i>In progress</span></div>
@@ -822,7 +819,7 @@ dialog .note{font-size:13px;color:var(--ink-3)}
         <p class="small">Measuring quality before and after every release, the way I already test data pipelines.</p>
       </article>
     </div>
-    <p class="muted small reveal" style="margin-top:18px">All code: <a href="https://github.com/desumitjha/artificial_intelligence_urai" target="_blank" rel="noopener">github.com/desumitjha/artificial_intelligence_urai</a></p>
+    <p class="muted small reveal" style="margin-top:18px">All code: <a href="#request" data-req="code">github.com/desumitjha/artificial_intelligence_urai</a></p>
 
     <div class="sec-head reveal" style="margin:70px 0 22px"><span class="kicker">Toolbox</span><h3 style="font-size:26px">What I work with</h3></div>
     <div class="skills">
@@ -920,7 +917,7 @@ dialog .note{font-size:13px;color:var(--ink-3)}
     </div>
     <div class="lane-steps reveal"><span><i>01</i>Pick what you'd like</span><span><i>02</i>Send the request (30 seconds)</span><span><i>03</i>I approve and reply with your link</span></div>
     <div class="lane">
-      <div class="card reveal"><span class="st done">Open</span><h3>Code on GitHub</h3><p>Two working projects with tests and CI. No request needed.</p><a class="btn btn-ghost btn-sm" href="https://github.com/desumitjha/artificial_intelligence_urai" target="_blank" rel="noopener">Open GitHub ↗</a></div>
+      <div class="card reveal"><span class="st done">Open</span><h3>Code on GitHub</h3><p>Two working projects with tests and CI. No request needed.</p><a class="btn btn-ghost btn-sm" href="#request" data-req="code">Open GitHub ↗</a></div>
       <div class="card reveal"><span class="st now"><i class="pd"></i>By approval</span><h3>CCAR-P notes &amp; cheat sheets</h3><p>One-page sheets per topic with retail examples: RAG, tool use, agents, guardrails, evaluation.</p><button class="btn btn-ghost btn-sm" data-req="notes">Request access</button></div>
       <div class="card reveal"><span class="st now"><i class="pd"></i>By approval</span><h3>Project deep-dives</h3><p>Architecture diagrams, design choices, what went wrong and how I fixed it.</p><button class="btn btn-ghost btn-sm" data-req="deep">Request access</button></div>
       <div class="card reveal"><span class="st built"><i class="pd"></i>Open to book</span><h3>20-minute intro call</h3><p>Hiring for data or AI? I'll walk you through my projects and what I can do for your team.</p><button class="btn btn-primary btn-sm" data-req="call">Book a call</button></div>
@@ -986,7 +983,19 @@ dialog .note{font-size:13px;color:var(--ink-3)}
 </section>
 </main>
 
-<footer><div class="wrap"><span>© <span id="yr"></span> Sumit Kumar Jha · Plain HTML, CSS and JS · no trackers</span><span>Pipeline → Prompt</span></div></footer>
+
+<dialog id="privacy" aria-labelledby="privT">
+  <button class="x" type="button" data-privacy-close aria-label="Close">×</button>
+  <h3 id="privT">Privacy notice · Datenschutz</h3>
+  <div class="note" style="font-size:14px;line-height:1.6;color:var(--ink-2)">
+    <p><b>Responsible:</b> Sumit Kumar Jha. Contact: via <a href="https://www.linkedin.com/in/sumit-j-b978b1137/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    <p><b>Hosting:</b> This site is hosted on GitHub Pages (GitHub Inc., USA). When you visit, GitHub processes technical data such as your IP address to deliver the page and keep it secure (Art. 6(1)(f) GDPR). See GitHub's privacy statement.</p>
+    <p><b>No tracking:</b> no cookies, no analytics, no third-party fonts or scripts. Your theme and language choice are stored only in your own browser (localStorage) and never sent anywhere.</p>
+    <p><b>Access requests:</b> the request form does not transmit anything. It only prepares a message that you can choose to send me on LinkedIn; LinkedIn's privacy policy applies to that message. I use what you send only to answer your request and delete it when no longer needed.</p>
+    <p><b>Your rights:</b> access, rectification, erasure, restriction, objection and data portability (Art. 15–21 GDPR), and the right to complain to a data protection supervisory authority.</p>
+  </div>
+</dialog>
+<footer><div class="wrap"><span>© <span id="yr"></span> Sumit Kumar Jha · Plain HTML, CSS and JS · no trackers · <button class="linkish" type="button" data-privacy style="font-size:13px">Privacy / Datenschutz</button></span><span>Pipeline → Prompt</span></div></footer>
 
 <dialog id="req" aria-labelledby="reqT">
   <button class="x" type="button" id="reqX" aria-label="Close">×</button>
@@ -996,6 +1005,7 @@ dialog .note{font-size:13px;color:var(--ink-3)}
   <label class="o"><input type="checkbox" name="what" value="your CCAR-P study notes and cheat sheets" data-de="Ihre CCAR-P-Lernnotizen und Spickzettel" data-k="notes"> CCAR-P study notes and cheat sheets</label>
   <label class="o"><input type="checkbox" name="what" value="the project deep-dives" data-de="die Projekt-Deep-Dives" data-k="deep"> Project deep-dives</label>
   <label class="o"><input type="checkbox" name="what" value="a 20-minute intro call" data-de="ein 20-minütiges Kennenlerngespräch" data-k="call"> A 20-minute intro call</label>
+  <label class="o"><input type="checkbox" name="what" value="access to the project source code on GitHub" data-de="Zugriff auf den Projekt-Quellcode auf GitHub" data-k="code"> Project source code (GitHub)</label>
   <input type="text" id="reqName" placeholder="Your name" aria-label="Your name">
   <input type="text" id="reqCo" placeholder="Company and role (optional)" aria-label="Company and role">
   <input type="text" id="reqG" placeholder="Google account to share the Drive folder with (optional)" aria-label="Google account for Drive access">
@@ -1003,6 +1013,7 @@ dialog .note{font-size:13px;color:var(--ink-3)}
   <textarea id="reqMsg" aria-label="Message"></textarea>
   <div style="margin-top:14px"><button class="btn btn-primary" id="reqGo" type="button" style="width:100%">Copy message and open LinkedIn</button></div>
   <p class="note" id="reqHint" style="margin:10px 0 0" aria-live="polite">Paste the message into a LinkedIn message to me, and I'll reply there.</p>
+  <p class="note" style="margin:8px 0 0">Nothing is sent from this site: your details only reach me if you paste them into LinkedIn yourself. <button class="linkish" type="button" data-privacy style="font-size:13px">Privacy notice</button></p>
 </dialog>
 <div class="toast" id="toast"></div>
 
@@ -1318,7 +1329,7 @@ dialog .note{font-size:13px;color:var(--ink-3)}
     document.getElementById('cdList').innerHTML=c.b.map(function(x){return '<li>'+esc(x)+'</li>'}).join('');
     document.getElementById('cdKey').textContent=KEY[id];
     document.getElementById('cdEx').textContent=EX[id];
-    document.getElementById('cdProof').innerHTML=c.proof?'<a href="'+c.proof[1]+'" target="_blank" rel="noopener">'+esc(c.proof[0])+' ↗</a>':(s==='next'?'Not yet: this is up next on my path.':'In progress: I am learning this now, project to follow.');
+    document.getElementById('cdProof').innerHTML=c.proof?'<a href="#request" data-req="code">'+esc(c.proof[0])+' · request access</a>':(s==='next'?'Not yet: this is up next on my path.':'In progress: I am learning this now, project to follow.');
     if(scroll&&window.innerWidth<900) document.getElementById('ccDetail').scrollIntoView({behavior:'smooth',block:'nearest'});
   }
   ORDER.forEach(function(id){var g=nodes[id];g.addEventListener('click',function(){showComp(id,true)});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();showComp(id,true)}})});
@@ -1362,6 +1373,11 @@ dialog .note{font-size:13px;color:var(--ink-3)}
     if(navigator.clipboard){navigator.clipboard.writeText(t).then(go,function(){msg.select();go()})}else{msg.select();go()}
   });
 })();
+</script>
+<script>
+(function(){var p=document.getElementById('privacy');if(!p)return;
+document.addEventListener('click',function(e){if(e.target.closest('[data-privacy]')){e.preventDefault();var r=document.getElementById('req');if(r&&r.open)r.close();if(p.showModal)p.showModal();else p.setAttribute('open','');}
+else if(e.target.closest('[data-privacy-close]')||e.target===p){p.close();}});})();
 </script>
 </body>
 </html>
