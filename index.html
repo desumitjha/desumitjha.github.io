@@ -793,7 +793,15 @@ dialog .note{font-size:13px;color:var(--ink-3)}
         <a class="go" href="https://github.com/desumitjha/artificial_intelligence_urai/tree/main/02-rag-from-scratch" target="_blank" rel="noopener">View code on GitHub →</a>
       </article>
       <article class="card pj big reveal">
-        <div class="pj-top"><span class="tag">Project 2 · Python · Gemini API</span><span class="st done">✓ Shipped</span></div>
+        <div class="pj-top"><span class="tag">Project 2 · ColPali · Qwen2-VL</span><span class="st done">✓ Shipped</span></div>
+        <h3>Multimodal RAG on PDFs</h3>
+        <p>Ask questions about PDFs that are mostly pictures (like IKEA manuals) and get written answers with the source pages shown. ColPali finds the right pages by looking at them as images, no OCR; Qwen2-VL reads them and writes the answer.</p>
+        <div class="mini-rag" aria-hidden="true"><span>PDF pages as images</span><em>→</em><span class="hl">ColPali retrieval</span><em>→</em><span>top pages</span><em>→</em><span class="hl">Qwen2-VL answer + citations</span></div>
+        <div class="chips"><span class="chip">ColPali</span><span class="chip">Qwen2-VL</span><span class="chip">Vision-language models</span><span class="chip">Retrieval eval</span><span class="chip">Gradio</span></div>
+        <a class="go" href="https://github.com/desumitjha/artificial_intelligence_urai/tree/main/03-multimodal-rag" target="_blank" rel="noopener">View code on GitHub →</a>
+      </article>
+      <article class="card pj big reveal">
+        <div class="pj-top"><span class="tag">Project 3 · Python · Gemini API</span><span class="st done">✓ Shipped</span></div>
         <h3>Note summariser (CLI)</h3>
         <p>A command-line tool that reads a text file and summarises it with an LLM. Secrets in an environment file, pinned dependencies, unit tests and a CI workflow.</p>
         <div class="term" aria-hidden="true"><div class="d"><i></i><i></i><i></i></div><span class="pr">$</span> python hello.py notes.txt<br><span class="mut">› reading notes.txt …</span><br><span class="mut">› calling the LLM API</span><br><span class="ok">✓ summary ready</span></div>
